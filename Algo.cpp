@@ -873,5 +873,276 @@ namespace za
 
 
     }
+
+    void DFSStack(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> visited;
+        for (auto& vertex : vertices)
+        {
+            visited[vertex] = false;
+        }
+        std::stack<std::string> st;
+        st.push(s);
+        std::string vertexNow = "";
+        while(!st.empty())
+        {
+            vertexNow = st.top();
+            st.pop();
+            std::cout << vertexNow << std::endl;
+            visited[vertexNow] = true;
+            for (auto& adj : g[vertexNow])
+            {
+                if (!visited[adj])
+                {
+                    st.push(adj);
+                }
+            }
+
+
+        }
+
+        std::cout << "Done\n";
+    }
+    
+    void DFSRecursion(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s, std::map < std::string, bool>& vis)
+    {
+        if (vis[s])
+        {
+            return;
+        }
+        std::cout << s << std::endl;
+        vis[s] = true;
+        for (auto& adj : g[s])
+        {
+            DFSRecursion(g, nodes, adj, vis);
+        }
+    }
+
+    void BFSQueue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> vis;
+        for (auto& ver : vertices)
+        {
+            vis[ver] = false;
+        }
+        std::queue<std::string> qt;
+        std::string vertexNow = "";
+        qt.push(s);
+
+        while (!qt.empty())
+        {
+            vertexNow = qt.front();
+            qt.pop();
+            if (!vis[vertexNow])
+            {
+                std::cout << vertexNow << std::endl;
+                vis[vertexNow] = true;
+
+                for (auto& adj : g[vertexNow])
+                {
+                    if (!vis[adj])
+                    {
+                        qt.push(adj);
+                    }
+                }
+            }
+
+        }
+
+        std::cout << "Done\n";
+    }
+
+    void IsGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> visited;
+        for (auto& vertex : vertices)
+        {
+            visited[vertex] = false;
+        }
+        std::stack<std::string> st;
+        // start at a random vertex
+        st.push(vertices[0]);
+        std::string vertexNow = "";
+        int numVisVertices = 0;
+        while (!st.empty())
+        {
+            vertexNow = st.top();
+            st.pop();
+            //std::cout << vertexNow << std::endl;
+            numVisVertices++;
+            visited[vertexNow] = true;
+            for (auto& adj : g[vertexNow])
+            {
+                if (!visited[adj])
+                {
+                    st.push(adj);
+                }
+            }
+
+
+        }
+        if (numVisVertices == n)
+        {
+            std::cout << "connected[YES]\n";
+        }
+        else
+        {
+            std::cout << "connected[NO]\n";
+        }
+       
+
+    }
+    void NumGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> visited;
+        for (auto& vertex : vertices)
+        {
+            visited[vertex] = false;
+        }
+        std::stack<std::string> st;
+       
+        auto dfsAt = [&](std::string s)
+        {
+            st.push(s);
+            std::string vertexNow = "";
+            int numConnected = 0;
+            while (!st.empty())
+            {
+                vertexNow = st.top();
+                st.pop();
+                visited[vertexNow] = true;
+                for (auto& adj : g[vertexNow])
+                {
+                    if (!visited[adj])
+                    {
+                        st.push(adj);
+                    }
+                }
+
+            }
+        };
+
+        int numConnected = 0;
+        // start at a random vertex
+        for (auto& vertex : vertices)
+        {
+            if (!visited[vertex])
+            {
+                dfsAt(vertex);
+                ++numConnected;
+            }
+        }
+
+        std::cout << "Number of components: " << numConnected << std::endl;
+
+    }
+
+    void HasGCycle(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> visited;
+        for (auto& vertex : vertices)
+        {
+            visited[vertex] = false;
+        }
+        std::stack<std::string> st;
+
+        //random vertex for dfs
+        st.push(vertices[0]);
+        std::string vertexNow = "";
+        int numNeigVisited = 0;
+        bool hasCycle = false;
+        while (!st.empty())
+        {
+            vertexNow = st.top();
+            st.pop();
+            visited[vertexNow] = true;
+            numNeigVisited = 0;
+            for (auto& adj : g[vertexNow])
+            {
+                if (!visited[adj])
+                {
+                    st.push(adj);
+                }
+                else
+                {
+                    ++numNeigVisited;
+                }
+            }
+
+            if (numNeigVisited = g[vertexNow].size())
+            {
+                hasCycle = true;
+            }
+
+
+        }
+
+        if (hasCycle)
+        {
+            std::cout << "Cycle[YES]\n";
+        }
+        else
+        {
+            std::cout << "Cycle[NO]\n";
+        }
+    }
+    void CanColorRedBlue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        int n = vertices.size();
+        std::map<std::string, bool> visited;
+        std::map<std::string, std::string> couleur;
+        const std::string RED = "RED", BLUE = "BLUE";
+        for (auto& vertex : vertices)
+        {
+            visited[vertex] = false;
+            couleur[vertex] = "";
+        }
+        bool bipartite = true;
+        std::stack<std::string> st;
+        st.push(vertices[0]);
+        std::string vertexNow = "";
+        while (!st.empty())
+        {
+            vertexNow = st.top();
+            st.pop();
+
+            visited[vertexNow] = true;
+            couleur[vertexNow] = RED;
+            for (auto& adj : g[vertexNow])
+            {
+                if (!visited[adj])
+                {
+                    st.push(adj);
+                    couleur[adj] = BLUE;
+                }
+
+                if (couleur[vertexNow] == couleur[adj])
+                {
+                    bipartite = false;
+                    break;
+                }
+            }
+
+
+        }
+
+        if (bipartite)
+        {
+            std::cout << "Bipartite[YES]\n";
+        }
+        else
+        {
+            std::cout << "Bipartite[NO]\n";
+        }
+     
+
+        std::cout << "Done\n";
+    }
+
 }
 

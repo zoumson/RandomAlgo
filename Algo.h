@@ -104,7 +104,13 @@ namespace za
     void Dijkstra(std::map <std::string, std::vector<std::pair<std::string, int>>> g, std::vector<std::string> nodes, std::string s);
 
     void FloydWarshall(std::map <std::string, std::map <std::string, int>> g, std::vector<std::string> nodes, std::string s);
-     
+    void DFSStack(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s);
+    void DFSRecursion(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s, std::map < std::string, bool>& vis);
+    void BFSQueue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s);
+    void IsGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void NumGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void HasGCycle(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void CanColorRedBlue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
 
-
+   
 }

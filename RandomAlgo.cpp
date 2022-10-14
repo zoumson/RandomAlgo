@@ -30,6 +30,14 @@ namespace za
         void BellManD();
         void FloydWarshallD();
         void DijkstraD();
+        void DFSStackD();
+        void DFSStackD();
+        void DFSRecursionD();
+        void BFSQueueD();
+        void IsGConnectedD();
+        void NumGConnectedD();
+        void HasGCycleD();
+        void CanColorRedBlueD();
      
 
 
@@ -41,7 +49,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::BellManD();
+    za::demo::CanColorRedBlueD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -432,6 +440,114 @@ namespace za
             Dijkstra(g, nodes, "1");
         }
 
+        void DFSStackD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            g["1"] = { "2", "4" };
+            g["2"] = { "1", "3", "5"};
+            g["3"] = { "2", "5"};
+            g["4"] = { "1"};
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
+            DFSStack(g, vertices, "1");
+
+        }
+        void DFSRecursionD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            g["1"] = { "2", "4" };
+            g["2"] = { "1", "3", "5"};
+            g["3"] = { "2", "5"};
+            g["4"] = { "1"};
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5"};
+            std::map<std::string, bool> vist;
+            for (auto& vert : vertices)
+            {
+                vist[vert] = false;
+            }
+            DFSRecursion(g, vertices, "1", vist);
+
+        }
+
+        void BFSQueueD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            g["1"] = { "2", "4" };
+            g["2"] = { "1", "3", "5" };
+            g["3"] = { "2", "6" };
+            g["4"] = { "1" };
+            g["5"] = { "2", "6" };
+            g["6"] = { "3", "5" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
+            BFSQueue(g, vertices, "1");
+        }
+
+        void IsGConnectedD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            g["1"] = { "3", "4" };
+            g["2"] = { "5" };
+
+
+            ////connected
+            //g["1"] = { "2", "4" };
+            //g["2"] = { "1", "3", "5" };
+            //g["3"] = { "2", "5" };
+            //g["4"] = { "1" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
+            IsGConnected(g, vertices);
+
+        }
+
+        void NumGConnectedD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            g["1"] = { "3", "4" };
+            g["2"] = { "5" };
+
+
+            ////connected
+            //g["1"] = { "2", "4" };
+            //g["2"] = { "1", "3", "5" };
+            //g["3"] = { "2", "5" };
+            //g["4"] = { "1" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
+            NumGConnected(g, vertices);
+
+        }
+        void HasGCycleD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            //g["1"] = { "3", "4" };
+            //g["2"] = { "5" };
+
+
+            //connected
+            g["1"] = { "2", "4" };
+            g["2"] = { "1", "3", "5" };
+            g["3"] = { "2", "5" };
+            g["4"] = { "1" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
+            HasGCycle(g, vertices);
+        }
+        void CanColorRedBlueD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+
+
+
+            ////no
+            //g["1"] = { "2", "4" };
+            //g["2"] = { "1", "3", "5" };
+            //g["3"] = { "2", "5" };
+            //g["4"] = { "1" };
+
+            //yes
+            g["1"] = { "2"};
+            g["2"] = { "3"};
+            g["3"] = { "4"};
+            std::vector<std::string> vertices = { "1", "2", "3", "4"};
+            CanColorRedBlue(g, vertices);
+        }
        
     }
 }
