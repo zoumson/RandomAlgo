@@ -43,6 +43,9 @@
 namespace za
 {
 
+
+
+
 	extern std::vector<int> subset;
 	extern std::vector < std::vector<int>> setOfSubset;	
 	extern std::vector<int> permutation;
@@ -96,9 +99,12 @@ namespace za
     std::vector<std::pair<int, int>> SubArr2SumHash(std::vector<int> arr, int s);
     std::vector<std::tuple<int, int, int>> SubArr3SumHash(std::vector<int> arr, int s);
     std::vector<std::tuple<int, int, int, int>> SubArr4SumHash(std::vector<int> arr, int s);
+    //void BellMan(std::vector < std::tuple<int, int, int>>& g, int n);    
+    void BellMan(std::vector < std::tuple<std::string, std::string, int>>& g, std::vector<std::string> nodes, std::string s);
+    void Dijkstra(std::map <std::string, std::vector<std::pair<std::string, int>>> g, std::vector<std::string> nodes, std::string s);
 
-
-
+    void FloydWarshall(std::map <std::string, std::map <std::string, int>> g, std::vector<std::string> nodes, std::string s);
+     
 
 
 }

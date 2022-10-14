@@ -6,6 +6,8 @@
 namespace za
 {
 
+
+
 	std::vector<int> subset;
 	std::vector < std::vector<int>> setOfSubset;
 	std::vector<int> permutation;
@@ -714,6 +716,162 @@ namespace za
 
 
         return allQuad;
+    }
+
+
+    void BellMan(std::vector < std::tuple<std::string, std::string, int>>& g, std::vector<std::string> nodes, std::string s)
+    {
+        std::map<std::string, int> dist;
+        int n = nodes.size();
+        for (auto& nd : nodes)
+        {
+            dist[nd] = INT_MAX;
+        }
+        dist[s] = 0;
+        std::string src = "", dst = "";
+        int w = 0;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (auto& ed : g)
+            {
+                std::tie(src, dst, w) = ed;
+                dist[dst] = dist[src] == INT_MAX ? dist[dst] : std::min(dist[dst], dist[src] + w);
+                //std::cout << "dest: [" << dst << "] -->" << dist[dst] << std::endl;
+            }
+        }
+        std::cout << "Shortest Distance: BellMan\n";
+        std::cout << "Graph: edges\n";
+        std::cout << "Time complexity: number of vertices * number of edges\n";
+        std::cout << "Advantage: can be used with negative weight\n";
+        for (auto& el : dist)
+        {
+            std::cout << "dest: [" << el.first << "] -->" << el.second << std::endl;
+        }
+
+    }
+    void Dijkstra(std::map <std::string, std::vector<std::pair<std::string, int>>> g, std::vector<std::string> nodes, std::string s)
+    {
+        typedef std::pair<std::string, int> dt;
+        std::map<std::string, int> dist;
+        std::map<std::string, bool> process;
+        int n = nodes.size();
+        for (auto& nd : nodes)
+        {
+            dist[nd] = INT_MAX;
+            process[nd] = false;
+        }
+        dist[s] = 0;
+        std::priority_queue<dt, std::vector<dt>, std::greater<dt>>q;
+        q.push({ s, dist[s] });
+
+        while (!q.empty())
+        {
+            auto src = q.top();
+            q.pop();
+            if (process[src.first])
+            {
+                continue;
+            }
+            process[src.first] = true;
+
+            for (auto& dst : g[src.first])
+            {
+                if (src.second == INT_MAX)
+                {
+                   
+                }
+                else 
+                {
+                    if (src.second + dst.second < dist[dst.first])
+                    {
+                        dist[dst.first] = src.second + dst.second;
+                        q.push({ dst.first , dist[dst.first] });
+                    }
+                }
+
+                std::cout << "dest: [" << dst.first << "] -->" << dist[dst.first] << std::endl;
+
+
+            }
+
+        }
+        std::cout << "Shortest Distance: Dijkstra\n";
+        std::cout << "Graph: adjacent list\n";
+        std::cout << "Time complexity: number of vertices * number of edges\n";
+        std::cout << "Advantage: faster\n";
+        std::cout << "Disadvantage: can't use negative weight\n";
+        for (auto& el : dist)
+        {
+            std::cout << "dest: [" << el.first << "] -->" << el.second << std::endl;
+        }
+    }
+    void FloydWarshall(std::map <std::string, std::map <std::string, int>> g, std::vector<std::string> nodes, std::string s)
+    {
+
+        std::map <std::string, std::map <std::string, int>> dist = g;
+        std::string src = "";
+        std::string dst = "";
+        std::string transit = "";
+        int n = nodes.size();
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                src = nodes[i];
+                dst = nodes[j];
+                if (src == dst)
+                {
+                    dist[src][dst] = 0;
+                }
+                else if (src != dst && g[src][dst] == 0)
+                {
+                    dist[src][dst] = INT_MAX;
+                }
+                else
+                {
+                    dist[src][dst] = g[src][dst];
+                }
+
+
+            }
+        }
+        for (int inter = 0; inter < n; inter++)
+        {
+            for (int i = 0; i < n; i++)
+            {
+
+                for (int j = 0; j < n; j++)
+                {
+                    src = nodes[i];
+                    dst = nodes[j];
+                    transit = nodes[inter];
+
+                    if (dist[src][transit] == INT_MAX || dist[transit][dst] == INT_MAX)
+                    {
+                        dist[src][dst] = dist[src][dst];
+                    }
+                    else
+                    {
+                        dist[src][dst] = std::min(dist[src][dst], dist[src][transit] + dist[transit][dst]);
+                    }
+
+
+                }
+            }
+        }
+
+        std::cout << "Shortest Distance : FloydWarshall\n";
+        std::cout << "Graph: adjacent matrix\n";
+        std::cout << "Time complexity: number of vertices * number of vertices * number of vertices\n";
+        std::cout << "Advantage: Shortest Path between all vertices\n";
+        for (int i = 0; i < n; i++)
+        {
+            std::cout << "dest: [" << nodes[i] << "] -->" << dist[s][nodes[i]] << std::endl;
+        }
+
+
+
     }
 }
 

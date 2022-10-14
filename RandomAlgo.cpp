@@ -27,6 +27,10 @@ namespace za
         void SubArr2SumHashD();
         void SubArr3SumHashD();
         void SubArr4SumHashD();
+        void BellManD();
+        void FloydWarshallD();
+        void DijkstraD();
+     
 
 
     }
@@ -37,7 +41,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::SubArr4SumHashD();
+    za::demo::BellManD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -341,7 +345,8 @@ namespace za
                 std::cout <<std::get<2>(i) <<"\n";
                 //std::cout <<i.second << std::endl;
             }
-        }        
+        }   
+
         void SubArr4SumHashD()
         {
             std::vector<int> arr = { 10, 20, 30, 40, 1, 2 };
@@ -360,5 +365,73 @@ namespace za
                 //std::cout <<i.second << std::endl;
             }
         }
+        void BellManD()
+        {
+
+            std::vector < std::tuple<std::string, std::string, int>> g = { {"1", "2", 5},{"1", "4", 9},{"1", "5", 1},
+                                                            {"2", "1", 5},{"2", "3", 2},
+                                                            {"3", "2", 2},{"3", "4", 6},
+                                                            {"4", "1", 9},{"4", "3", 6},{"4", "5", 2},
+                                                            {"5", "1", 1},{"5", "4", 2},
+            };
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+
+            BellMan(g, nodes, "1");
+        }   
+        
+        void FloydWarshallD()
+        {
+            std::map <std::string, std::map <std::string, int>> g;
+            g["1"]["1"] = 0;
+            g["2"]["1"] = 5;
+            g["3"]["1"] = 0;
+            g["4"]["1"] = 9;
+            g["5"]["1"] = 1;
+
+            g["1"]["2"] = 5;
+            g["2"]["2"] = 0;
+            g["3"]["2"] = 2;
+            g["4"]["2"] = 0;
+            g["5"]["2"] = 0;
+            
+            g["1"]["3"] = 0;
+            g["2"]["3"] = 2;
+            g["3"]["3"] = 0;
+            g["4"]["3"] = 7;
+            g["5"]["3"] = 0;
+                        
+            g["1"]["4"] = 9;
+            g["2"]["4"] = 0;
+            g["3"]["4"] = 7;
+            g["4"]["4"] = 0;
+            g["5"]["4"] = 2;
+                                    
+            g["1"]["5"] = 1;
+            g["2"]["5"] = 0;
+            g["3"]["5"] = 0;
+            g["4"]["5"] = 2;
+            g["5"]["5"] = 0;
+
+
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+
+            FloydWarshall(g, nodes, "1");
+        }
+                
+        void DijkstraD()
+        {
+            std::map <std::string, std::vector<std::pair<std::string, int>>> g;
+            
+                g["1"] = { {"2", 5},{"4", 9},{"5", 1}};
+                g["2"] = { {"1", 5},{"3", 2}};
+                g["3"] = { {"2", 2},{"4", 6}};
+                g["4"] = { {"1", 9},{"3", 6},{"5", 2}};
+                g["5"] = { {"1", 1},{"4", 2}};
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+
+            Dijkstra(g, nodes, "1");
+        }
+
+       
     }
 }
