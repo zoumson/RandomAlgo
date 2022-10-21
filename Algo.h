@@ -111,6 +111,13 @@ namespace za
     void NumGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
     void HasGCycle(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
     void CanColorRedBlue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
-
+    void TopologicalSortKahn(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void DFSArrivalDepartureRecur(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, std::tuple<bool, int, int>>& visArrDep, int& t);
+    bool DFS3statesTopologicalSort(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, int>& state, std::deque<std::string>& topSort);
+    void DFSArrivalDepartureT(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void TopologicalSortDFS(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void TopologicalSortDFS3States(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
+    //void ArrivalDepartureG(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s);
    
 }
