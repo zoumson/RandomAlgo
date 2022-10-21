@@ -38,7 +38,8 @@ namespace za
         void NumGConnectedD();
         void HasGCycleD();
         void CanColorRedBlueD();
-     
+        void TopologicalSortKahnD();
+        void DFSArrivalDepartureTD();
 
 
     }
@@ -49,7 +50,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::CanColorRedBlueD();
+    za::demo::DFSArrivalDepartureTD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -547,6 +548,34 @@ namespace za
             g["3"] = { "4"};
             std::vector<std::string> vertices = { "1", "2", "3", "4"};
             CanColorRedBlue(g, vertices);
+        }
+        void TopologicalSortKahnD() 
+        {
+            //{ 0, 6 }, { 1, 2 }, { 1, 4 }, { 1, 6 }, { 3, 0 }, { 3, 4 },
+            //{ 5, 1 }, { 7, 0 }, { 7, 1 }
+            std::map <std::string, std::vector<std::string>> g;
+            g["0"] = { "6"};
+            g["1"] = { "2", "4", "6"};
+            g["3"] = { "0", "4" };
+            g["5"] = { "1" };
+            g["7"] = { "0", "1" };
+            std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7"};
+            TopologicalSortKahn(g, vertices);
+
+        }
+        void DFSArrivalDepartureTD()
+        {
+
+
+            std::map <std::string, std::vector<std::string>> g;
+            g["0"] = { "1", "2" };
+            g["2"] = { "3", "4" };
+            g["3"] = { "1", "5" };
+            g["4"] = { "5" };
+            g["6"] = { "7" };
+            std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
+            DFSArrivalDepartureT(g, vertices);
+
         }
        
     }
