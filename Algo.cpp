@@ -1247,7 +1247,7 @@ namespace za
 
 
     }    
-  /*  
+
     void TopologicalSortDFS(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         size_t n = vertices.size();
@@ -1264,19 +1264,145 @@ namespace za
             {
                 DFSArrivalDepartureRecur(g, vertex, visArrDep, t);
             }
-        }*/
-
-        //std::cout << "\tArrival Departure\n";
-        //std::cout << "\tDFS\n";
-        //std::cout << "\tVertices\tArrival\t\tDeparture\n";
-
-        //for (auto& vertex : vertices)
-        //{
-        //    std::cout << "\t" << vertex << "\t\t" << std::get<1>(visArrDep[vertex]) << "\t\t" << std::get<2>(visArrDep[vertex]) << std::endl;
-        //}
+        }
 
 
+
+        typedef std::pair<std::string, std::tuple<bool, int, int>> mp;
+
+        std::vector< mp> mapToVector;
+        for(auto& mel: visArrDep)
+        {
+            mapToVector.push_back(mel);
+        };
+
+        std::sort(mapToVector.begin(), mapToVector.end(), [=](mp& m1, mp& m2)
+            {
+                return std::get<2>(m1.second) > std::get<2>(m2.second);
+            });
+        std::cout << "\tTopological Sort\n";
+        std::cout << "\tDFS\n";
+        for (auto& vertexInfo : mapToVector)
+        {
+            std::cout << "\t" << vertexInfo.first <<", ";
+            std::cout << std::get<1>(vertexInfo.second) << ", ";
+            std::cout << std::get<2>(vertexInfo.second) << std::endl;
+        }
+
+ 
     }
+    bool DFS3statesTopologicalSort(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, int>& state, std::deque<std::string>& topSort)
+    {
+        if (state[s] == 1)
+        {
+            return false;
+        }
+        if (state[s] == 2)
+        {
+            return true;
+        }
+        //under processing
+        state[s] = 1;
+        for (auto& adj : g[s])
+        {
+
+            if (!DFS3statesTopologicalSort(g, adj, state, topSort))
+            {
+                return false;
+            }
+
+        }
+        state[s] = 2;
+        topSort.push_front(s);
+        return true;
+    }
+    void TopologicalSortDFS3States(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        //DFS3statesTopologicalSort
+        size_t n = vertices.size();
+        int t = -1;
+        std::map<std::string, int> state;
+        for (auto& vertex : vertices)
+        {
+            state[vertex] = 0;
+        }
+        std::cout << "\tTopological Sort\n";
+        std::cout << "\tDFS 3 states\n";
+        std::deque<std::string> topSort;
+        for (auto& vertex : vertices)
+        {
+
+            if (state[vertex] == 0)
+            {
+                DFS3statesTopologicalSort(g, vertex, state, topSort);
+            }
+            else if (state[vertex] == 1)
+            {
+                std::cout << "\tThere is a cycle\n";
+                return;
+            }
+        }
+
+
+        for (auto& vertexInfo : topSort)
+        {
+            std::cout << "\t" << vertexInfo << std::endl;
+        }
+    }
+
+    void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        auto bfs = [=](std::map <std::string, std::vector<std::string>>& graph, std::string startNode)
+        {   
+            std::map <std::string, bool> visited;
+            std::map <std::string, int> dist;
+            std::queue <std::string> q;
+            std::string maxNode;
+            int maxNodeDist;
+            visited[startNode] = true;
+            maxNode = startNode;
+            dist[startNode] = 0;
+            maxNodeDist = dist[startNode];
+            q.push(startNode);
+            std::string parentNode;
+            while (!q.empty())
+            {
+                parentNode = q.front();
+                q.pop();
+                if (dist[parentNode] > maxNodeDist)
+                {
+                    maxNode = parentNode;
+                    maxNodeDist = dist[parentNode];
+                }
+                // process node s
+                for (auto childNode : graph[parentNode])
+                {
+                    if (visited[childNode])
+                    {
+                        continue;
+                    }
+                    visited[childNode] = true;
+                    dist[childNode] = dist[parentNode] + 1;
+                    q.push(childNode);
+                }
+            }
+            return std::make_pair(maxNode, maxNodeDist);
+        };
+        //std::string x = vertices[0];
+        std::string x = vertices[1];
+        auto dist1 = bfs(g, x);
+        std::string a = dist1.first;
+        auto dist2 = bfs(g, a);
+        std::string b = dist2.first;
+        std::cout << "\nDiameter nodes\n";
+        std::cout << "\nStart: " << a  << "\n";
+        std::cout << "\End: " << b  << "\n";
+        std::cout << "\Length: " << dist2.second << "\n";
+
+
+       
+    }
+
 
 
 
