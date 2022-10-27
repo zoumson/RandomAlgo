@@ -1,4 +1,4 @@
-﻿// RandomAlgo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// RandomAlgo.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -40,6 +40,9 @@ namespace za
         void CanColorRedBlueD();
         void TopologicalSortKahnD();
         void DFSArrivalDepartureTD();
+        void TopologicalSortDFSD();
+        void TopologicalSortDFS3StatesD();
+        void TreeDiameterD();
 
 
     }
@@ -50,7 +53,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::DFSArrivalDepartureTD();
+    za::demo::TreeDiameterD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -576,6 +579,82 @@ namespace za
             std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
             DFSArrivalDepartureT(g, vertices);
 
+        }
+
+        void TopologicalSortDFSD()
+        {
+
+            std::map <std::string, std::vector<std::string>> g;
+            ////clycle
+            //g["1"] = { "2"};
+            //g["2"] = { "3"};
+            //g["3"] = { "5", "6"};
+            //g["4"] = { "1", "5"};
+            //g["5"] = { "2"};            
+
+            //no clycle
+            g["1"] = { "2" };
+            g["2"] = { "3" };
+            g["3"] = { "6" };
+            g["4"] = { "1", "5" };
+            g["5"] = { "2", "3" };
+
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
+            TopologicalSortDFS(g, vertices);
+        }
+       
+        void TopologicalSortDFS3StatesD()
+        {
+
+            std::map <std::string, std::vector<std::string>> g;
+            ////clycle
+            //g["1"] = { "2"};
+            //g["2"] = { "3"};
+            //g["3"] = { "5", "6"};
+            //g["4"] = { "1", "5"};
+            //g["5"] = { "2"};            
+            
+            //no clycle
+            g["1"] = { "2"};
+            g["2"] = { "3"};
+            g["3"] = { "6"};
+            g["4"] = { "1", "5"};
+            g["5"] = { "2", "3"};
+    
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6"};
+            TopologicalSortDFS3States(g, vertices);
+        }
+        void TreeDiameterD()
+        {
+            std::map <std::string, std::vector<std::string>> g;
+            ////clycle
+                //g["1"] = { "2"};
+                //g["2"] = { "3"};
+                //g["3"] = { "5", "6"};
+                //g["4"] = { "1", "5"};
+                //g["5"] = { "2"};            
+
+                //no clycle
+            //g["1"] = { "2" , "3", "4"};
+            //g["2"] = { "1", "5", "6"};
+            //g["3"] = { "1" };
+            //g["4"] = { "1", "7" };
+            //g["5"] = { "2"};
+            //g["6"] = { "2", "8"};
+            //g["7"] = { "4"};
+            //g["8"] = { "6"};
+                        
+            g["1"] = { "2" , "3", "4"};
+            g["2"] = { "1", "5", "6"};
+            g["3"] = { "1" };
+            g["4"] = { "1", "7" };
+            g["5"] = { "2"};
+            g["6"] = { "2"};
+            g["7"] = { "4"};
+
+
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
+            TreeDiameter(g, vertices);
         }
        
     }
