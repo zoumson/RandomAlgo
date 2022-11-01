@@ -43,11 +43,7 @@ namespace za
         void TopologicalSortDFSD();
         void TopologicalSortDFS3StatesD();
         void TreeDiameterD();
-<<<<<<< HEAD
         void SpanningTreeKruskalD();
-=======
-
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
 
     }
 }
@@ -57,15 +53,11 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-<<<<<<< HEAD
     za::demo::SpanningTreeKruskalD();
-=======
-    za::demo::TreeDiameterD();
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
-    std::cout << "Process time = " << (double)msTimer1 << std::endl;    
+    std::cout << "Process time = " << (double)msTimer1 << std::endl;
 
 }
 
@@ -148,17 +140,17 @@ namespace za
             for (int i = 0; i < setOfPermutation.size(); i++)
             {
 
-                    std::cout << "{ ";
-                    for (int j = 0; j < setOfPermutation[i].size(); j++)
+                std::cout << "{ ";
+                for (int j = 0; j < setOfPermutation[i].size(); j++)
+                {
+                    std::cout << setOfPermutation[i][j];
+                    if (j != setOfPermutation[i].size() - 1)
                     {
-                        std::cout << setOfPermutation[i][j];
-                        if (j != setOfPermutation[i].size() - 1)
-                        {
-                            std::cout << ", ";
-                        }
+                        std::cout << ", ";
                     }
-                    std::cout << " }" << std::endl;
-                    std::cout << std::endl;
+                }
+                std::cout << " }" << std::endl;
+                std::cout << std::endl;
 
             }
         }
@@ -176,20 +168,20 @@ namespace za
             for (int i = 0; i < setOfPermutation.size(); i++)
             {
 
-                    std::cout << "{ ";
-                    for (int j = 0; j < setOfPermutation[i].size(); j++)
+                std::cout << "{ ";
+                for (int j = 0; j < setOfPermutation[i].size(); j++)
+                {
+                    std::cout << setOfPermutation[i][j];
+                    if (j != setOfPermutation[i].size() - 1)
                     {
-                        std::cout << setOfPermutation[i][j];
-                        if (j != setOfPermutation[i].size() - 1)
-                        {
-                            std::cout << ", ";
-                        }
+                        std::cout << ", ";
                     }
-                    std::cout << " }" << std::endl;
-                    std::cout << std::endl;
+                }
+                std::cout << " }" << std::endl;
+                std::cout << std::endl;
 
             }
-        }        
+        }
         void MinNumCToSumRecursionBruteD()
         {
             int n = 520;
@@ -198,7 +190,7 @@ namespace za
             minNumC = MinNumCToSumRecursionBrute(n, c);
 
             std::cout << "min num C: " << minNumC << std::endl;
-        }              
+        }
         void MinNumCToSumRecursionMemoD()
         {
             int n = 520;
@@ -208,23 +200,23 @@ namespace za
             minNumC = MinNumCToSumRecursionMeMo(n, c, m);
 
             std::cout << "min num C: " << minNumC << std::endl;
-        }        
+        }
         void MinNumCToSumIterativeD()
         {
             int n = 520;
             int minNumC = 0;
-            std::vector<int> c = { 1, 2, 5, 10, 20, 50, 100, 200};
+            std::vector<int> c = { 1, 2, 5, 10, 20, 50, 100, 200 };
             minNumC = MinNumCToSumIterative(n, c);
             std::cout << "min num C: " << minNumC << std::endl;
-        }        
+        }
         void MinNumCToSumIterativeReturnCD()
         {
             int n = 520;
             //int minNumC = 0;
-            std::vector<int> c = { 1, 2, 5, 10, 20, 50, 100, 200};
+            std::vector<int> c = { 1, 2, 5, 10, 20, 50, 100, 200 };
             auto minNumC = MinNumCToSumIterativeReturnC(n, c);
             std::cout << "min num C: " << std::get<0>(minNumC) << std::endl;
-            std::cout << "all C: "<< std::endl;
+            std::cout << "all C: " << std::endl;
             for (auto& ci : std::get<1>(minNumC))
             {
                 std::cout << ci << std::endl;
@@ -236,7 +228,7 @@ namespace za
             int n = 5;
             //int minNumC = 0;
 
-            std::vector<int> c = { 1, 3, 4};
+            std::vector<int> c = { 1, 3, 4 };
             auto minNumC = MaxNumWawToSumIterative(n, c);
             std::cout << "all way: " << minNumC << std::endl;
 
@@ -258,7 +250,7 @@ namespace za
 
             for (auto& ss : longS)
             {
-                std::cout <<"\t\t" << ss << std::endl;
+                std::cout << "\t\t" << ss << std::endl;
             }
         }
         void GridCostPathRightDownDiagD()
@@ -283,7 +275,7 @@ namespace za
             std::cout << "Max d c: " << maxCostD << std::endl;
             std::cout << "Min d c: " << minCostD << std::endl;
 
-           
+
         }
         void GridNumPathRightDownDiagD()
         {
@@ -331,7 +323,7 @@ namespace za
 
             for (auto& i : subArr)
             {
-                std::cout <<i << std::endl;
+                std::cout << i << std::endl;
             }
         }
         void SubArr2SumHashD()
@@ -345,10 +337,10 @@ namespace za
 
             for (auto& i : subArr)
             {
-                std::cout <<i.first <<", ";
-                std::cout <<i.second << std::endl;
+                std::cout << i.first << ", ";
+                std::cout << i.second << std::endl;
             }
-        }        
+        }
         void SubArr3SumHashD()
         {
             std::vector<int> arr = { 1, 4, 45, 6, 10, 8 };
@@ -360,12 +352,12 @@ namespace za
 
             for (auto& i : subArr)
             {
-                std::cout <<std::get<0>(i) <<", ";
-                std::cout <<std::get<1>(i) <<", ";
-                std::cout <<std::get<2>(i) <<"\n";
+                std::cout << std::get<0>(i) << ", ";
+                std::cout << std::get<1>(i) << ", ";
+                std::cout << std::get<2>(i) << "\n";
                 //std::cout <<i.second << std::endl;
             }
-        }   
+        }
         void SubArr4SumHashD()
         {
             std::vector<int> arr = { 10, 20, 30, 40, 1, 2 };
@@ -377,10 +369,10 @@ namespace za
 
             for (auto& i : subArr)
             {
-                std::cout <<std::get<0>(i) <<", ";
-                std::cout <<std::get<1>(i) <<", ";
-                std::cout <<std::get<2>(i) <<", ";
-                std::cout <<std::get<3>(i) <<"\n";
+                std::cout << std::get<0>(i) << ", ";
+                std::cout << std::get<1>(i) << ", ";
+                std::cout << std::get<2>(i) << ", ";
+                std::cout << std::get<3>(i) << "\n";
                 //std::cout <<i.second << std::endl;
             }
         }
@@ -393,10 +385,10 @@ namespace za
                                                             {"4", "1", 9},{"4", "3", 6},{"4", "5", 2},
                                                             {"5", "1", 1},{"5", "4", 2},
             };
-            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5" };
 
             BellMan(g, nodes, "1");
-        }          
+        }
         void FloydWarshallD()
         {
             std::map <std::string, std::map <std::string, int>> g;
@@ -411,19 +403,19 @@ namespace za
             g["3"]["2"] = 2;
             g["4"]["2"] = 0;
             g["5"]["2"] = 0;
-            
+
             g["1"]["3"] = 0;
             g["2"]["3"] = 2;
             g["3"]["3"] = 0;
             g["4"]["3"] = 7;
             g["5"]["3"] = 0;
-                        
+
             g["1"]["4"] = 9;
             g["2"]["4"] = 0;
             g["3"]["4"] = 7;
             g["4"]["4"] = 0;
             g["5"]["4"] = 2;
-                                    
+
             g["1"]["5"] = 1;
             g["2"]["5"] = 0;
             g["3"]["5"] = 0;
@@ -431,20 +423,20 @@ namespace za
             g["5"]["5"] = 0;
 
 
-            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5" };
 
             FloydWarshall(g, nodes, "1");
-        }               
+        }
         void DijkstraD()
         {
             std::map <std::string, std::vector<std::pair<std::string, int>>> g;
-            
-                g["1"] = { {"2", 5},{"4", 9},{"5", 1}};
-                g["2"] = { {"1", 5},{"3", 2}};
-                g["3"] = { {"2", 2},{"4", 6}};
-                g["4"] = { {"1", 9},{"3", 6},{"5", 2}};
-                g["5"] = { {"1", 1},{"4", 2}};
-            std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
+
+            g["1"] = { {"2", 5},{"4", 9},{"5", 1} };
+            g["2"] = { {"1", 5},{"3", 2} };
+            g["3"] = { {"2", 2},{"4", 6} };
+            g["4"] = { {"1", 9},{"3", 6},{"5", 2} };
+            g["5"] = { {"1", 1},{"4", 2} };
+            std::vector<std::string> nodes = { "1", "2", "3", "4", "5" };
 
             Dijkstra(g, nodes, "1");
         }
@@ -452,9 +444,9 @@ namespace za
         {
             std::map <std::string, std::vector<std::string>> g;
             g["1"] = { "2", "4" };
-            g["2"] = { "1", "3", "5"};
-            g["3"] = { "2", "5"};
-            g["4"] = { "1"};
+            g["2"] = { "1", "3", "5" };
+            g["3"] = { "2", "5" };
+            g["4"] = { "1" };
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
             DFSStack(g, vertices, "1");
 
@@ -463,10 +455,10 @@ namespace za
         {
             std::map <std::string, std::vector<std::string>> g;
             g["1"] = { "2", "4" };
-            g["2"] = { "1", "3", "5"};
-            g["3"] = { "2", "5"};
-            g["4"] = { "1"};
-            std::vector<std::string> vertices = { "1", "2", "3", "4", "5"};
+            g["2"] = { "1", "3", "5" };
+            g["3"] = { "2", "5" };
+            g["4"] = { "1" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5" };
             std::map<std::string, bool> vist;
             for (auto& vert : vertices)
             {
@@ -547,23 +539,23 @@ namespace za
             //g["4"] = { "1" };
 
             //yes
-            g["1"] = { "2"};
-            g["2"] = { "3"};
-            g["3"] = { "4"};
-            std::vector<std::string> vertices = { "1", "2", "3", "4"};
+            g["1"] = { "2" };
+            g["2"] = { "3" };
+            g["3"] = { "4" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4" };
             CanColorRedBlue(g, vertices);
         }
-        void TopologicalSortKahnD() 
+        void TopologicalSortKahnD()
         {
             //{ 0, 6 }, { 1, 2 }, { 1, 4 }, { 1, 6 }, { 3, 0 }, { 3, 4 },
             //{ 5, 1 }, { 7, 0 }, { 7, 1 }
             std::map <std::string, std::vector<std::string>> g;
-            g["0"] = { "6"};
-            g["1"] = { "2", "4", "6"};
+            g["0"] = { "6" };
+            g["1"] = { "2", "4", "6" };
             g["3"] = { "0", "4" };
             g["5"] = { "1" };
             g["7"] = { "0", "1" };
-            std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7"};
+            std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
             TopologicalSortKahn(g, vertices);
 
         }
@@ -581,10 +573,6 @@ namespace za
             DFSArrivalDepartureT(g, vertices);
 
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         void TopologicalSortDFSD()
         {
 
@@ -605,12 +593,7 @@ namespace za
 
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             TopologicalSortDFS(g, vertices);
-<<<<<<< HEAD
-        }     
-=======
         }
-       
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         void TopologicalSortDFS3StatesD()
         {
 
@@ -621,71 +604,43 @@ namespace za
             //g["3"] = { "5", "6"};
             //g["4"] = { "1", "5"};
             //g["5"] = { "2"};            
-            
+
             //no clycle
-            g["1"] = { "2"};
-            g["2"] = { "3"};
-            g["3"] = { "6"};
-            g["4"] = { "1", "5"};
-            g["5"] = { "2", "3"};
-    
-            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6"};
+            g["1"] = { "2" };
+            g["2"] = { "3" };
+            g["3"] = { "6" };
+            g["4"] = { "1", "5" };
+            g["5"] = { "2", "3" };
+
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             TopologicalSortDFS3States(g, vertices);
         }
         void TreeDiameterD()
         {
-<<<<<<< HEAD
-            std::map <std::string, std::vector<std::string>> g;                       
-=======
             std::map <std::string, std::vector<std::string>> g;
-            ////clycle
-                //g["1"] = { "2"};
-                //g["2"] = { "3"};
-                //g["3"] = { "5", "6"};
-                //g["4"] = { "1", "5"};
-                //g["5"] = { "2"};            
-
-                //no clycle
-            //g["1"] = { "2" , "3", "4"};
-            //g["2"] = { "1", "5", "6"};
-            //g["3"] = { "1" };
-            //g["4"] = { "1", "7" };
-            //g["5"] = { "2"};
-            //g["6"] = { "2", "8"};
-            //g["7"] = { "4"};
-            //g["8"] = { "6"};
-                        
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
-            g["1"] = { "2" , "3", "4"};
-            g["2"] = { "1", "5", "6"};
+            g["1"] = { "2" , "3", "4" };
+            g["2"] = { "1", "5", "6" };
             g["3"] = { "1" };
             g["4"] = { "1", "7" };
-            g["5"] = { "2"};
-            g["6"] = { "2"};
-            g["7"] = { "4"};
-<<<<<<< HEAD
-            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
+            g["5"] = { "2" };
+            g["6"] = { "2" };
+            g["7"] = { "4" };
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7" };
             TreeDiameter(g, vertices);
         }
         void SpanningTreeKruskalD()
         {
             std::map <std::string, std::vector<std::pair<std::string, int>>> g;
-            g["1"] = { {"2", 3 },{"5", 5 }};
-            g["2"] = { {"3", 5 },{"5", 6 }};
-            g["3"] = { {"4", 9 },{"6", 3 }};
-            g["4"] = { {"6", 7 }};
-            g["5"] = { {"6", 2 }};
+            g["1"] = { {"2", 3 },{"5", 5 } };
+            g["2"] = { {"3", 5 },{"5", 6 } };
+            g["3"] = { {"4", 9 },{"6", 3 } };
+            g["4"] = { {"6", 7 } };
+            g["5"] = { {"6", 2 } };
 
-            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6"};
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             SpanningTreeKruskal(g, vertices);
 
-=======
-
-
-            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
-            TreeDiameter(g, vertices);
->>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         }
-       
+
     }
 }

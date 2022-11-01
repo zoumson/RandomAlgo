@@ -6,255 +6,255 @@
 namespace za
 {
 
-	std::vector<int> subset;
-	std::vector < std::vector<int>> setOfSubset;
-	std::vector<int> permutation;
-	std::vector<bool> chosenPermutation;
-	std::vector < std::vector<int>> setOfPermutation;
-	int NumberOfSetBits(uint32_t i)
-	{
-		// Java: use int, and use >>> instead of >>. Or use Integer.bitCount()
-		// C or C++: use uint32_t
-		i = i - ((i >> 1) & 0x55555555);        // add pairs of bits
-		i = (i & 0x33333333) + ((i >> 2) & 0x33333333);  // quads
-		i = (i + (i >> 4)) & 0x0F0F0F0F;        // groups of 8
-		return (i * 0x01010101) >> 24;          // horizontal sum of bytes
-	}
-	void GenerateSubsetIdxBit(unsigned int n, std::vector < std::vector<unsigned int>>& subset)
-	{
-		auto NumOfSetBits = [&](uint32_t i) -> int
-		{
-			// Java: use int, and use >>> instead of >>. Or use Integer.bitCount()
-			// C or C++: use uint32_t
-			i = i - ((i >> 1) & 0x55555555);        // add pairs of bits
-			i = (i & 0x33333333) + ((i >> 2) & 0x33333333);  // quads
-			i = (i + (i >> 4)) & 0x0F0F0F0F;        // groups of 8
-			return (i * 0x01010101) >> 24;          // horizontal sum of bytes
-		};
-		unsigned int maxSubset = 1 << n;
-		subset.resize(maxSubset);
-		unsigned int currSubsetSize = 0;
-		std::vector<unsigned int>currSubset;
-		unsigned int idxSubsetEl = 0;
-		for (int idxSubset = 0; idxSubset < maxSubset; idxSubset++)
-		{
-			currSubsetSize = NumOfSetBits(idxSubset);
-			currSubset.resize(currSubsetSize);
-			idxSubsetEl = 0;
-			for (int el = 0; el < n; el++)
-			{
-				if (idxSubset & (1 << el))
-				{
-					currSubset[idxSubsetEl++] = el;
-				}
-			}
-			subset[idxSubset] = currSubset;
-		}
-	}
-	void GenerateSubsetIdxRecursion(unsigned int k, unsigned int n)
-	{
-		if (k == n)
-		{
-			setOfSubset.push_back(subset);
-		}
-		else
-		{
-			// include k in the subset
-			subset.push_back(k);
-			GenerateSubsetIdxRecursion(k + 1, n);
-			subset.pop_back();
-			// don't include k in the subset
-			GenerateSubsetIdxRecursion(k + 1, n);
-		}
-	}
-	int fact(int i)
-	{
-		if (i == 0 || i == 1)
-		{
-			return 1;
-		}
-		else
-		{
-			return i * fact(i - 1);
-		}
-	}
-	void PermutationIdxSTL(unsigned int n, std::vector < std::vector<unsigned int>>& permutation)
-	{
-		std::vector<unsigned int> initialSet(n);
-		unsigned int maxPermutationSize = fact(n);
-		permutation.resize(maxPermutationSize);
-		unsigned int permutationIdx = 0;
-		std::iota(initialSet.begin(), initialSet.end(), 0);
-		std::vector<unsigned int> currSet = initialSet;
-		do
-		{
-			permutation[permutationIdx++] = currSet;
-		} while (std::next_permutation(currSet.begin(), currSet.end()));
+    std::vector<int> subset;
+    std::vector < std::vector<int>> setOfSubset;
+    std::vector<int> permutation;
+    std::vector<bool> chosenPermutation;
+    std::vector < std::vector<int>> setOfPermutation;
+    int NumberOfSetBits(uint32_t i)
+    {
+        // Java: use int, and use >>> instead of >>. Or use Integer.bitCount()
+        // C or C++: use uint32_t
+        i = i - ((i >> 1) & 0x55555555);        // add pairs of bits
+        i = (i & 0x33333333) + ((i >> 2) & 0x33333333);  // quads
+        i = (i + (i >> 4)) & 0x0F0F0F0F;        // groups of 8
+        return (i * 0x01010101) >> 24;          // horizontal sum of bytes
+    }
+    void GenerateSubsetIdxBit(unsigned int n, std::vector < std::vector<unsigned int>>& subset)
+    {
+        auto NumOfSetBits = [&](uint32_t i) -> int
+        {
+            // Java: use int, and use >>> instead of >>. Or use Integer.bitCount()
+            // C or C++: use uint32_t
+            i = i - ((i >> 1) & 0x55555555);        // add pairs of bits
+            i = (i & 0x33333333) + ((i >> 2) & 0x33333333);  // quads
+            i = (i + (i >> 4)) & 0x0F0F0F0F;        // groups of 8
+            return (i * 0x01010101) >> 24;          // horizontal sum of bytes
+        };
+        unsigned int maxSubset = 1 << n;
+        subset.resize(maxSubset);
+        unsigned int currSubsetSize = 0;
+        std::vector<unsigned int>currSubset;
+        unsigned int idxSubsetEl = 0;
+        for (int idxSubset = 0; idxSubset < maxSubset; idxSubset++)
+        {
+            currSubsetSize = NumOfSetBits(idxSubset);
+            currSubset.resize(currSubsetSize);
+            idxSubsetEl = 0;
+            for (int el = 0; el < n; el++)
+            {
+                if (idxSubset & (1 << el))
+                {
+                    currSubset[idxSubsetEl++] = el;
+                }
+            }
+            subset[idxSubset] = currSubset;
+        }
+    }
+    void GenerateSubsetIdxRecursion(unsigned int k, unsigned int n)
+    {
+        if (k == n)
+        {
+            setOfSubset.push_back(subset);
+        }
+        else
+        {
+            // include k in the subset
+            subset.push_back(k);
+            GenerateSubsetIdxRecursion(k + 1, n);
+            subset.pop_back();
+            // don't include k in the subset
+            GenerateSubsetIdxRecursion(k + 1, n);
+        }
+    }
+    int fact(int i)
+    {
+        if (i == 0 || i == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return i * fact(i - 1);
+        }
+    }
+    void PermutationIdxSTL(unsigned int n, std::vector < std::vector<unsigned int>>& permutation)
+    {
+        std::vector<unsigned int> initialSet(n);
+        unsigned int maxPermutationSize = fact(n);
+        permutation.resize(maxPermutationSize);
+        unsigned int permutationIdx = 0;
+        std::iota(initialSet.begin(), initialSet.end(), 0);
+        std::vector<unsigned int> currSet = initialSet;
+        do
+        {
+            permutation[permutationIdx++] = currSet;
+        } while (std::next_permutation(currSet.begin(), currSet.end()));
 
-	}
-	void PermutationIdxRecursion(unsigned int n)
-	{
-		if (permutation.size() == n)
-		{
-			setOfPermutation.push_back(permutation);
+    }
+    void PermutationIdxRecursion(unsigned int n)
+    {
+        if (permutation.size() == n)
+        {
+            setOfPermutation.push_back(permutation);
 
-		}
-		else
-		{
-			for (int i = 0; i < n; i++)
-			{
-				if (chosenPermutation[i])
-				{
-					continue;
-				}
-				chosenPermutation[i] = true;
-				permutation.push_back(i);
+        }
+        else
+        {
+            for (int i = 0; i < n; i++)
+            {
+                if (chosenPermutation[i])
+                {
+                    continue;
+                }
+                chosenPermutation[i] = true;
+                permutation.push_back(i);
 
-				PermutationIdxRecursion(n);
+                PermutationIdxRecursion(n);
 
-				chosenPermutation[i] = false;
-				permutation.pop_back();
-			}
-		}
-	}
-	int MinNumCToSumRecursionBrute(int n, std::vector<int>& allC)
-	{
-		if (n < 0)
-		{
-			return INT_MAX;
-		}
-		if (n == 0)
-		{
-			return 0;
-		}
+                chosenPermutation[i] = false;
+                permutation.pop_back();
+            }
+        }
+    }
+    int MinNumCToSumRecursionBrute(int n, std::vector<int>& allC)
+    {
+        if (n < 0)
+        {
+            return INT_MAX;
+        }
+        if (n == 0)
+        {
+            return 0;
+        }
 
-		int bestMinNumCToSum = INT_MAX;
-		int remainderAftC = bestMinNumCToSum;
-		int currNumCToSum = bestMinNumCToSum;
-		for (auto& c : allC)
-		{
-			remainderAftC = n - c;
-			if (remainderAftC >= 0)
-			{
-				currNumCToSum = MinNumCToSumRecursionBrute(remainderAftC, allC) + 1;
-				if (currNumCToSum < bestMinNumCToSum)
-				{
-					bestMinNumCToSum = currNumCToSum;
-				}
-			}
-			
-		}
+        int bestMinNumCToSum = INT_MAX;
+        int remainderAftC = bestMinNumCToSum;
+        int currNumCToSum = bestMinNumCToSum;
+        for (auto& c : allC)
+        {
+            remainderAftC = n - c;
+            if (remainderAftC >= 0)
+            {
+                currNumCToSum = MinNumCToSumRecursionBrute(remainderAftC, allC) + 1;
+                if (currNumCToSum < bestMinNumCToSum)
+                {
+                    bestMinNumCToSum = currNumCToSum;
+                }
+            }
 
-		return bestMinNumCToSum;
-	}
-	int MinNumCToSumRecursionMeMo(int n, std::vector<int>& allC, std::vector<int>& m)
-	{
-		if (n < 0)
-		{
-			return INT_MAX;
-		}
-		if (m[n] != INT_MAX)
-		{
-			return m[n];
-		}
-		if (n == 0)
-		{
-			return 0;
-		}
+        }
 
-		int bestMinNumCToSum = INT_MAX;
-		int remainderAftC = bestMinNumCToSum;
-		int currNumCToSum = bestMinNumCToSum;
-		for (auto& c : allC)
-		{
-			remainderAftC = n - c;
-			if (remainderAftC >= 0)
-			{
-				currNumCToSum = MinNumCToSumRecursionBrute(remainderAftC, allC) + 1;
-				if (currNumCToSum < bestMinNumCToSum)
-				{
-					bestMinNumCToSum = currNumCToSum;
-				}
-			}
+        return bestMinNumCToSum;
+    }
+    int MinNumCToSumRecursionMeMo(int n, std::vector<int>& allC, std::vector<int>& m)
+    {
+        if (n < 0)
+        {
+            return INT_MAX;
+        }
+        if (m[n] != INT_MAX)
+        {
+            return m[n];
+        }
+        if (n == 0)
+        {
+            return 0;
+        }
 
-		}
-		m[n] = bestMinNumCToSum;
-		return bestMinNumCToSum;
-	}
-	int MinNumCToSumIterative(int defSum, std::vector<int>& allC)
-	{
-		if (defSum < 0)
-		{
-			return INT_MAX;
-		}
+        int bestMinNumCToSum = INT_MAX;
+        int remainderAftC = bestMinNumCToSum;
+        int currNumCToSum = bestMinNumCToSum;
+        for (auto& c : allC)
+        {
+            remainderAftC = n - c;
+            if (remainderAftC >= 0)
+            {
+                currNumCToSum = MinNumCToSumRecursionBrute(remainderAftC, allC) + 1;
+                if (currNumCToSum < bestMinNumCToSum)
+                {
+                    bestMinNumCToSum = currNumCToSum;
+                }
+            }
 
-		std::vector<int> m(defSum + 1, INT_MAX);
-		m[0] = 0;
+        }
+        m[n] = bestMinNumCToSum;
+        return bestMinNumCToSum;
+    }
+    int MinNumCToSumIterative(int defSum, std::vector<int>& allC)
+    {
+        if (defSum < 0)
+        {
+            return INT_MAX;
+        }
 
-		int remainderAftC = INT_MAX;
-		int currNumCToSum = INT_MAX;
+        std::vector<int> m(defSum + 1, INT_MAX);
+        m[0] = 0;
 
-		for (int currSum = 1; currSum <= defSum; currSum++)
-		{
-			for (auto& c : allC)
-			{
-				currNumCToSum = INT_MAX;
-				remainderAftC = currSum - c;
-				if (remainderAftC >= 0)
-				{
-					currNumCToSum = m[remainderAftC] + 1;
-					if (currNumCToSum < m[currSum])
-					{
-						m[currSum] = currNumCToSum;
-					}
-				}
+        int remainderAftC = INT_MAX;
+        int currNumCToSum = INT_MAX;
 
-			}
-		}
+        for (int currSum = 1; currSum <= defSum; currSum++)
+        {
+            for (auto& c : allC)
+            {
+                currNumCToSum = INT_MAX;
+                remainderAftC = currSum - c;
+                if (remainderAftC >= 0)
+                {
+                    currNumCToSum = m[remainderAftC] + 1;
+                    if (currNumCToSum < m[currSum])
+                    {
+                        m[currSum] = currNumCToSum;
+                    }
+                }
 
-		return m[defSum];
-	}
-	std::tuple<int, std::vector<int>> MinNumCToSumIterativeReturnC(int defSum, std::vector<int>& allC)
-	{
-		//if (defSum < 0)
-		//{
-		//	return INT_MAX;
-		//}
+            }
+        }
 
-		std::vector<int> m(defSum + 1, INT_MAX);
-		std::vector<int> first(defSum + 1, INT_MAX);
-		m[0] = 0;
+        return m[defSum];
+    }
+    std::tuple<int, std::vector<int>> MinNumCToSumIterativeReturnC(int defSum, std::vector<int>& allC)
+    {
+        //if (defSum < 0)
+        //{
+        //	return INT_MAX;
+        //}
 
-		int remainderAftC = INT_MAX;
-		int currNumCToSum = INT_MAX;
+        std::vector<int> m(defSum + 1, INT_MAX);
+        std::vector<int> first(defSum + 1, INT_MAX);
+        m[0] = 0;
 
-		for (int currSum = 1; currSum <= defSum; currSum++)
-		{
-			for (auto& c : allC)
-			{
-				currNumCToSum = INT_MAX;
-				remainderAftC = currSum - c;
-				if (remainderAftC >= 0)
-				{
-					currNumCToSum = m[remainderAftC] + 1;
-					if (currNumCToSum < m[currSum])
-					{
-						m[currSum] = currNumCToSum;
-						first[currSum] = c;
-					}
-				}
+        int remainderAftC = INT_MAX;
+        int currNumCToSum = INT_MAX;
 
-			}
-		}
+        for (int currSum = 1; currSum <= defSum; currSum++)
+        {
+            for (auto& c : allC)
+            {
+                currNumCToSum = INT_MAX;
+                remainderAftC = currSum - c;
+                if (remainderAftC >= 0)
+                {
+                    currNumCToSum = m[remainderAftC] + 1;
+                    if (currNumCToSum < m[currSum])
+                    {
+                        m[currSum] = currNumCToSum;
+                        first[currSum] = c;
+                    }
+                }
+
+            }
+        }
         std::vector<int>r;
         int n = defSum;
-        while (n > 0) 
+        while (n > 0)
         {
             r.push_back(first[n]);
             n -= first[n];
         }
-		return std::make_tuple(m[defSum], r);
-	}
+        return std::make_tuple(m[defSum], r);
+    }
     int MaxNumWawToSumIterative(int sumDef, std::vector<int>& c)
     {
         int bigNum = 1e9 + 7;
@@ -326,7 +326,7 @@ namespace za
         }
 
         int maxSubPos = std::distance(l.begin(), std::max_element(l.begin(), l.end()));
-        
+
         std::deque<int>r;
         int currPos = maxSubPos;
         while (currPos != -1)
@@ -358,7 +358,7 @@ namespace za
             for (int j = 1; j < n; j++)
             {
                 neig.push_back(minMaxC[i][j - 1]);
-                neig.push_back(minMaxC[i-1][j]);
+                neig.push_back(minMaxC[i - 1][j]);
 
                 if (diag)
                 {
@@ -376,7 +376,7 @@ namespace za
 
                 minMaxC[i][j] = prevSum + c[i][j];
                 neig.clear();
-                
+
             }
         }
 
@@ -411,8 +411,8 @@ namespace za
             else
             {
                 numWay[0][i] = 0;
-            }            
-            
+            }
+
             if (!blockCol && o[i][0])
             {
                 numWay[i][0] = numWay[i - 1][0];
@@ -426,7 +426,7 @@ namespace za
             {
                 numWay[i][0] = 0;
             }
-            
+
         }
 
         std::vector<int> neig;
@@ -502,7 +502,7 @@ namespace za
                     //Remove current item capacity from current capacity
                     //Find the million that can be made with the remaining capacity 
                     //Item count starts from 1
-                    capacityWithoutCurrItem =  currentCapacity - wt[currentItem - 1] ;
+                    capacityWithoutCurrItem = currentCapacity - wt[currentItem - 1];
 
                     millionWithCurrItem = million[currentItem - 1][capacityWithoutCurrItem] + v[currentItem - 1];
 
@@ -510,7 +510,7 @@ namespace za
 
                     million[currentItem][currentCapacity] = millionWithCurrItem > millionWihtoutCurrItem ? millionWithCurrItem : millionWihtoutCurrItem;
                 }
-   
+
 
             }
         }
@@ -522,7 +522,7 @@ namespace za
     {
         int n1 = s1.size();
         int n2 = s2.size();
-        
+
         //Modify S1 to get S2
         std::vector < std::vector<int>> dist(n2 + 1, std::vector<int>(n1 + 1, 0));
 
@@ -532,7 +532,7 @@ namespace za
         {
             dist[0][i] = i;
         }
-        
+
         //First string is empty
         //Add all the characters to s1 to get s2
         for (int i = 0; i < n2 + 1; i++)
@@ -558,8 +558,8 @@ namespace za
                     //Deletion
                     //Remove a character from s1 to get s2
                     //Edit is 1
-                    neig.push_back(dist[iS2][iS1 - 1] + 1);                    
-                    
+                    neig.push_back(dist[iS2][iS1 - 1] + 1);
+
                     //Insertion
                     //Add a character to s1 to get s2
                     //Edit is 1
@@ -576,7 +576,7 @@ namespace za
 
                     neig.clear();
                 }
-               
+
             }
         }
 
@@ -596,7 +596,7 @@ namespace za
                 ++endPnt;
                 runingSum += arr[endPnt];
             }
-            else 
+            else
             {
                 runingSum -= arr[startPnt];
                 ++startPnt;
@@ -604,7 +604,7 @@ namespace za
         }
 
         return { arr.begin() + startPnt, arr.begin() + endPnt };
-        
+
     }
     std::vector<std::pair<int, int>> SubArr2SumHash(std::vector<int> arr, int s)
     {
@@ -620,7 +620,7 @@ namespace za
             if (keepCompl.find(currNumComplToSum) != keepCompl.end())
             {
 
-                allPair.push_back({currNum, currNumComplToSum });
+                allPair.push_back({ currNum, currNumComplToSum });
 
             }
             else
@@ -632,7 +632,7 @@ namespace za
         return allPair;
     }
     std::vector<std::tuple<int, int, int>> SubArr3SumHash(std::vector<int> arr, int s)
-    {       
+    {
         std::vector<std::tuple<int, int, int>> allTupl;
         int n = arr.size();
         for (int k = 0; k < n - 2; k++)
@@ -660,11 +660,11 @@ namespace za
         return allTupl;
     }
     std::vector<std::tuple<int, int, int, int>> SubArr4SumHash(std::vector<int> arr, int s)
-    {       
+    {
         std::vector<std::tuple<int, int, int, int>> allQuad;
         int n = arr.size();
         std::unordered_map<int, std::pair<int, int>> keepCompl;
-      
+
         for (int i = 0; i < n - 1; i++)
         {
             for (int j = i + 1; j < n; j++)
@@ -687,8 +687,8 @@ namespace za
 
                     if (i != ind1 && i != ind2 && j != ind1 && j != ind2)
                     {
-                        allQuad.push_back({ arr[i], arr[j], arr[ind1], arr[ind2]});
-                    }                  
+                        allQuad.push_back({ arr[i], arr[j], arr[ind1], arr[ind2] });
+                    }
                 }
                 else
                 {
@@ -760,9 +760,9 @@ namespace za
             {
                 if (src.second == INT_MAX)
                 {
-                   
+
                 }
-                else 
+                else
                 {
                     if (src.second + dst.second < dist[dst.first])
                     {
@@ -864,7 +864,7 @@ namespace za
         std::stack<std::string> st;
         st.push(s);
         std::string vertexNow = "";
-        while(!st.empty())
+        while (!st.empty())
         {
             vertexNow = st.top();
             st.pop();
@@ -882,7 +882,7 @@ namespace za
         }
 
         std::cout << "Done\n";
-    }   
+    }
     void DFSRecursion(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s, std::map < std::string, bool>& vis)
     {
         if (vis[s])
@@ -968,7 +968,7 @@ namespace za
         {
             std::cout << "connected[NO]\n";
         }
-       
+
 
     }
     void NumGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
@@ -980,7 +980,7 @@ namespace za
             visited[vertex] = false;
         }
         std::stack<std::string> st;
-       
+
         auto dfsAt = [&](std::string s)
         {
             st.push(s);
@@ -1114,7 +1114,7 @@ namespace za
         {
             std::cout << "Bipartite[NO]\n";
         }
-     
+
 
         std::cout << "Done\n";
     }
@@ -1162,7 +1162,7 @@ namespace za
                 }
             }
 
-            
+
 
         }
 
@@ -1170,8 +1170,8 @@ namespace za
 
         for (auto& el : l)
         {
-            
-            std::cout << el <<  std::endl;
+
+            std::cout << el << std::endl;
         }
 
     }
@@ -1219,7 +1219,7 @@ namespace za
         }
 
 
-    }    
+    }
     void TopologicalSortDFS(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         size_t n = vertices.size();
@@ -1243,7 +1243,7 @@ namespace za
         typedef std::pair<std::string, std::tuple<bool, int, int>> mp;
 
         std::vector< mp> mapToVector;
-        for(auto& mel: visArrDep)
+        for (auto& mel : visArrDep)
         {
             mapToVector.push_back(mel);
         };
@@ -1256,12 +1256,12 @@ namespace za
         std::cout << "\tDFS\n";
         for (auto& vertexInfo : mapToVector)
         {
-            std::cout << "\t" << vertexInfo.first <<", ";
+            std::cout << "\t" << vertexInfo.first << ", ";
             std::cout << std::get<1>(vertexInfo.second) << ", ";
             std::cout << std::get<2>(vertexInfo.second) << std::endl;
         }
 
- 
+
     }
     bool DFS3statesTopologicalSort(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, int>& state, std::deque<std::string>& topSort)
     {
@@ -1324,7 +1324,7 @@ namespace za
     void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         auto bfs = [=](std::map <std::string, std::vector<std::string>>& graph, std::string startNode)
-        {   
+        {
             std::map <std::string, bool> visited;
             std::map <std::string, int> dist;
             std::queue <std::string> q;
@@ -1366,12 +1366,12 @@ namespace za
         auto dist2 = bfs(g, a);
         std::string b = dist2.first;
         std::cout << "\nDiameter nodes\n";
-        std::cout << "\nStart: " << a  << "\n";
-        std::cout << "\End: " << b  << "\n";
+        std::cout << "\nStart: " << a << "\n";
+        std::cout << "\End: " << b << "\n";
         std::cout << "\Length: " << dist2.second << "\n";
 
 
-       
+
     }
     void SpanningTreeKruskal(std::map <std::string, std::vector<std::pair<std::string, int>>>& g, std::vector<std::string>& vertices)
     {
@@ -1391,7 +1391,7 @@ namespace za
             leader[vertex] = vertex;
             followers[vertex] = 1;
         }
-        
+
 
         std::sort(edg.begin(), edg.end(), [=](edgT ed1, edgT ed2) {
             return std::get<2>(ed1) < std::get<2>(ed2); }
@@ -1412,12 +1412,12 @@ namespace za
             std::string myLeader = follower;
             return myLeader;
         };
-        
+
         auto sameParty = [&](std::string followerA, std::string followerB)
         {
             return findLeader(followerA) == findLeader(followerB);
         };
-        
+
         auto uniteParty = [&](std::string followerA, std::string followerB)
         {
             std::string leaderA, leaderB;
@@ -1427,7 +1427,7 @@ namespace za
             {
                 std::string tmp = leaderA;
                 leaderA = leaderB;
-                leaderB = tmp;              
+                leaderB = tmp;
             }
 
             followers[leaderA] += followers[leaderB];
@@ -1440,12 +1440,12 @@ namespace za
         {
             auto& a = std::get<0>(ed);
             auto& b = std::get<1>(ed);
-           
+
             if (!sameParty(a, b))
             {
                 edges.push_back({ a, b });
                 uniteParty(a, b);
-                
+
             }
         }
         //Minimum spanning tree
@@ -1456,268 +1456,6 @@ namespace za
         }
 
     }
-
-
-
-    void TopologicalSortKahn(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
-    {
-        size_t n = vertices.size();
-        std::map<std::string, int> indegree;
-
-        //Count indegrees
-        for (auto& src : vertices)
-        {
-            if (indegree.find(src) == indegree.end())
-            {
-                indegree.insert({ src, 0 });
-            }
-            auto allDest = g[src];
-            for (auto& dst : allDest)
-            {
-                indegree[dst]++;
-            }
-        }
-        std::stack<std::string> s;
-        std::vector<std::string>l;
-        //indegree 0
-        for (auto& vertex : vertices)
-        {
-            if (indegree[vertex] == 0)
-            {
-                s.push(vertex);
-            }
-        }
-
-        std::string prerequisite = "";
-        while (!s.empty())
-        {
-            prerequisite = s.top();
-            s.pop();
-            l.push_back(prerequisite);
-            for (auto& prerequisiteNext : g[prerequisite])
-            {
-                --indegree[prerequisiteNext];
-                if (indegree[prerequisiteNext] == 0)
-                {
-                    s.push(prerequisiteNext);
-                }
-            }
-
-            
-
-        }
-
-        std::cout << "Topologival sort\n";
-
-        for (auto& el : l)
-        {
-            
-            std::cout << el <<  std::endl;
-        }
-
-    }
-
-    void DFSArrivalDepartureRecur(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, std::tuple<bool, int, int>>& visArrDep, int& t)
-    {
-        std::get<0>(visArrDep[s]) = true;
-        std::get<1>(visArrDep[s]) = ++t;
-
-        for (auto& adj : g[s])
-        {
-            if (!std::get<0>(visArrDep[adj]))
-            {
-                DFSArrivalDepartureRecur(g, adj, visArrDep, t);
-            }
-        }
-
-        std::get<2>(visArrDep[s]) = ++t;
-
-    }
-    void DFSArrivalDepartureT(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
-    {
-        size_t n = vertices.size();
-        int t = -1;
-        std::map<std::string, std::tuple<bool, int, int>> visArrDep;
-        for (auto& vertex : vertices)
-        {
-            visArrDep[vertex] = { false, -1, -1 };
-        }
-        for (auto& vertex : vertices)
-        {
-
-            if (!std::get<0>(visArrDep[vertex]))
-            {
-                DFSArrivalDepartureRecur(g, vertex, visArrDep, t);
-            }
-        }
-
-        std::cout << "\tArrival Departure\n";
-        std::cout << "\tDFS\n";
-        std::cout << "\tVertices\tArrival\t\tDeparture\n";
-
-        for (auto& vertex : vertices)
-        {
-            std::cout << "\t" << vertex << "\t\t" << std::get<1>(visArrDep[vertex]) << "\t\t" << std::get<2>(visArrDep[vertex]) << std::endl;
-        }
-
-
-    }    
-
-    void TopologicalSortDFS(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
-    {
-        size_t n = vertices.size();
-        int t = -1;
-        std::map<std::string, std::tuple<bool, int, int>> visArrDep;
-        for (auto& vertex : vertices)
-        {
-            visArrDep[vertex] = { false, -1, -1 };
-        }
-        for (auto& vertex : vertices)
-        {
-
-            if (!std::get<0>(visArrDep[vertex]))
-            {
-                DFSArrivalDepartureRecur(g, vertex, visArrDep, t);
-            }
-        }
-
-
-
-        typedef std::pair<std::string, std::tuple<bool, int, int>> mp;
-
-        std::vector< mp> mapToVector;
-        for(auto& mel: visArrDep)
-        {
-            mapToVector.push_back(mel);
-        };
-
-        std::sort(mapToVector.begin(), mapToVector.end(), [=](mp& m1, mp& m2)
-            {
-                return std::get<2>(m1.second) > std::get<2>(m2.second);
-            });
-        std::cout << "\tTopological Sort\n";
-        std::cout << "\tDFS\n";
-        for (auto& vertexInfo : mapToVector)
-        {
-            std::cout << "\t" << vertexInfo.first <<", ";
-            std::cout << std::get<1>(vertexInfo.second) << ", ";
-            std::cout << std::get<2>(vertexInfo.second) << std::endl;
-        }
-
- 
-    }
-    bool DFS3statesTopologicalSort(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, int>& state, std::deque<std::string>& topSort)
-    {
-        if (state[s] == 1)
-        {
-            return false;
-        }
-        if (state[s] == 2)
-        {
-            return true;
-        }
-        //under processing
-        state[s] = 1;
-        for (auto& adj : g[s])
-        {
-
-            if (!DFS3statesTopologicalSort(g, adj, state, topSort))
-            {
-                return false;
-            }
-
-        }
-        state[s] = 2;
-        topSort.push_front(s);
-        return true;
-    }
-    void TopologicalSortDFS3States(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
-    {
-        //DFS3statesTopologicalSort
-        size_t n = vertices.size();
-        int t = -1;
-        std::map<std::string, int> state;
-        for (auto& vertex : vertices)
-        {
-            state[vertex] = 0;
-        }
-        std::cout << "\tTopological Sort\n";
-        std::cout << "\tDFS 3 states\n";
-        std::deque<std::string> topSort;
-        for (auto& vertex : vertices)
-        {
-
-            if (state[vertex] == 0)
-            {
-                DFS3statesTopologicalSort(g, vertex, state, topSort);
-            }
-            else if (state[vertex] == 1)
-            {
-                std::cout << "\tThere is a cycle\n";
-                return;
-            }
-        }
-
-
-        for (auto& vertexInfo : topSort)
-        {
-            std::cout << "\t" << vertexInfo << std::endl;
-        }
-    }
-
-    void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
-    {
-        auto bfs = [=](std::map <std::string, std::vector<std::string>>& graph, std::string startNode)
-        {   
-            std::map <std::string, bool> visited;
-            std::map <std::string, int> dist;
-            std::queue <std::string> q;
-            std::string maxNode;
-            int maxNodeDist;
-            visited[startNode] = true;
-            maxNode = startNode;
-            dist[startNode] = 0;
-            maxNodeDist = dist[startNode];
-            q.push(startNode);
-            std::string parentNode;
-            while (!q.empty())
-            {
-                parentNode = q.front();
-                q.pop();
-                if (dist[parentNode] > maxNodeDist)
-                {
-                    maxNode = parentNode;
-                    maxNodeDist = dist[parentNode];
-                }
-                // process node s
-                for (auto childNode : graph[parentNode])
-                {
-                    if (visited[childNode])
-                    {
-                        continue;
-                    }
-                    visited[childNode] = true;
-                    dist[childNode] = dist[parentNode] + 1;
-                    q.push(childNode);
-                }
-            }
-            return std::make_pair(maxNode, maxNodeDist);
-        };
-        //std::string x = vertices[0];
-        std::string x = vertices[1];
-        auto dist1 = bfs(g, x);
-        std::string a = dist1.first;
-        auto dist2 = bfs(g, a);
-        std::string b = dist2.first;
-        std::cout << "\nDiameter nodes\n";
-        std::cout << "\nStart: " << a  << "\n";
-        std::cout << "\End: " << b  << "\n";
-        std::cout << "\Length: " << dist2.second << "\n";
-
-
-       
-    }
-
 
 
 
