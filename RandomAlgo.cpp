@@ -1,4 +1,4 @@
-﻿// RandomAlgo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// RandomAlgo.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -43,7 +43,11 @@ namespace za
         void TopologicalSortDFSD();
         void TopologicalSortDFS3StatesD();
         void TreeDiameterD();
+<<<<<<< HEAD
         void SpanningTreeKruskalD();
+=======
+
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
 
     }
 }
@@ -53,7 +57,11 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
+<<<<<<< HEAD
     za::demo::SpanningTreeKruskalD();
+=======
+    za::demo::TreeDiameterD();
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -573,6 +581,10 @@ namespace za
             DFSArrivalDepartureT(g, vertices);
 
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         void TopologicalSortDFSD()
         {
 
@@ -593,7 +605,12 @@ namespace za
 
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             TopologicalSortDFS(g, vertices);
+<<<<<<< HEAD
         }     
+=======
+        }
+       
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         void TopologicalSortDFS3StatesD()
         {
 
@@ -617,7 +634,28 @@ namespace za
         }
         void TreeDiameterD()
         {
+<<<<<<< HEAD
             std::map <std::string, std::vector<std::string>> g;                       
+=======
+            std::map <std::string, std::vector<std::string>> g;
+            ////clycle
+                //g["1"] = { "2"};
+                //g["2"] = { "3"};
+                //g["3"] = { "5", "6"};
+                //g["4"] = { "1", "5"};
+                //g["5"] = { "2"};            
+
+                //no clycle
+            //g["1"] = { "2" , "3", "4"};
+            //g["2"] = { "1", "5", "6"};
+            //g["3"] = { "1" };
+            //g["4"] = { "1", "7" };
+            //g["5"] = { "2"};
+            //g["6"] = { "2", "8"};
+            //g["7"] = { "4"};
+            //g["8"] = { "6"};
+                        
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
             g["1"] = { "2" , "3", "4"};
             g["2"] = { "1", "5", "6"};
             g["3"] = { "1" };
@@ -625,6 +663,7 @@ namespace za
             g["5"] = { "2"};
             g["6"] = { "2"};
             g["7"] = { "4"};
+<<<<<<< HEAD
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
             TreeDiameter(g, vertices);
         }
@@ -640,6 +679,12 @@ namespace za
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6"};
             SpanningTreeKruskal(g, vertices);
 
+=======
+
+
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
+            TreeDiameter(g, vertices);
+>>>>>>> d405b50140a01730e6742822a79d3a7ce63ff024
         }
        
     }
