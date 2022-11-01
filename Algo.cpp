@@ -6,8 +6,6 @@
 namespace za
 {
 
-
-
 	std::vector<int> subset;
 	std::vector < std::vector<int>> setOfSubset;
 	std::vector<int> permutation;
@@ -634,15 +632,11 @@ namespace za
         return allPair;
     }
     std::vector<std::tuple<int, int, int>> SubArr3SumHash(std::vector<int> arr, int s)
-    {
-        
-
+    {       
         std::vector<std::tuple<int, int, int>> allTupl;
         int n = arr.size();
-
         for (int k = 0; k < n - 2; k++)
         {
-
             std::unordered_set<int> keepCompl;
             int currNum = 0, currNumComplToSum = s - currNum;
             for (int i = 0; i < n; i++)
@@ -651,9 +645,7 @@ namespace za
                 currNumComplToSum = s - currNum;
                 if (keepCompl.find(currNumComplToSum) != keepCompl.end())
                 {
-
                     allTupl.push_back({ arr[k], arr[i], currNumComplToSum });
-
                 }
                 else
                 {
@@ -668,9 +660,7 @@ namespace za
         return allTupl;
     }
     std::vector<std::tuple<int, int, int, int>> SubArr4SumHash(std::vector<int> arr, int s)
-    {
-        
-
+    {       
         std::vector<std::tuple<int, int, int, int>> allQuad;
         int n = arr.size();
         std::unordered_map<int, std::pair<int, int>> keepCompl;
@@ -683,11 +673,8 @@ namespace za
             }
         }
 
-
-
         for (int i = 0; i < n - 1; i++)
         {
-
             int currNum = 0, currNumComplToSum = s - currNum;
             for (int j = i + 1; j < n; j++)
             {
@@ -701,9 +688,7 @@ namespace za
                     if (i != ind1 && i != ind2 && j != ind1 && j != ind2)
                     {
                         allQuad.push_back({ arr[i], arr[j], arr[ind1], arr[ind2]});
-
                     }                  
-
                 }
                 else
                 {
@@ -713,12 +698,8 @@ namespace za
 
 
         }
-
-
         return allQuad;
     }
-
-
     void BellMan(std::vector < std::tuple<std::string, std::string, int>>& g, std::vector<std::string> nodes, std::string s)
     {
         std::map<std::string, int> dist;
@@ -808,7 +789,6 @@ namespace za
     }
     void FloydWarshall(std::map <std::string, std::map <std::string, int>> g, std::vector<std::string> nodes, std::string s)
     {
-
         std::map <std::string, std::map <std::string, int>> dist = g;
         std::string src = "";
         std::string dst = "";
@@ -873,7 +853,6 @@ namespace za
 
 
     }
-
     void DFSStack(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s)
     {
         int n = vertices.size();
@@ -903,8 +882,7 @@ namespace za
         }
 
         std::cout << "Done\n";
-    }
-    
+    }   
     void DFSRecursion(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& nodes, std::string s, std::map < std::string, bool>& vis)
     {
         if (vis[s])
@@ -918,7 +896,6 @@ namespace za
             DFSRecursion(g, nodes, adj, vis);
         }
     }
-
     void BFSQueue(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s)
     {
         int n = vertices.size();
@@ -953,7 +930,6 @@ namespace za
 
         std::cout << "Done\n";
     }
-
     void IsGConnected(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         int n = vertices.size();
@@ -1040,7 +1016,6 @@ namespace za
         std::cout << "Number of components: " << numConnected << std::endl;
 
     }
-
     void HasGCycle(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         int n = vertices.size();
@@ -1143,7 +1118,6 @@ namespace za
 
         std::cout << "Done\n";
     }
-
     void TopologicalSortKahn(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         size_t n = vertices.size();
@@ -1201,7 +1175,6 @@ namespace za
         }
 
     }
-
     void DFSArrivalDepartureRecur(std::map <std::string, std::vector<std::string>>& g, std::string s, std::map<std::string, std::tuple<bool, int, int>>& visArrDep, int& t)
     {
         std::get<0>(visArrDep[s]) = true;
@@ -1247,7 +1220,6 @@ namespace za
 
 
     }    
-
     void TopologicalSortDFS(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         size_t n = vertices.size();
@@ -1349,7 +1321,6 @@ namespace za
             std::cout << "\t" << vertexInfo << std::endl;
         }
     }
-
     void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         auto bfs = [=](std::map <std::string, std::vector<std::string>>& graph, std::string startNode)
@@ -1402,7 +1373,89 @@ namespace za
 
        
     }
+    void SpanningTreeKruskal(std::map <std::string, std::vector<std::pair<std::string, int>>>& g, std::vector<std::string>& vertices)
+    {
+        std::map<std::string, std::string> leader;
+        std::map<std::string, int> followers;
+        std::vector < std::string> tri;
 
+        typedef std::tuple<std::string, std::string, int> edgT;
+        std::vector <edgT> edg;
+
+        for (auto& vertex : vertices)
+        {
+            for (auto& adj : g[vertex])
+            {
+                edg.push_back({ vertex , adj.first, adj.second });
+            }
+            leader[vertex] = vertex;
+            followers[vertex] = 1;
+        }
+        
+
+        std::sort(edg.begin(), edg.end(), [=](edgT ed1, edgT ed2) {
+            return std::get<2>(ed1) < std::get<2>(ed2); }
+        );
+
+        for (auto& edg_ : edg)
+        {
+            //std::cout << std::get<0>(edg_) << "--> " << std::get<1>(edg_) << " : " << std::get<2>(edg_) << std::endl;
+        }
+
+        auto findLeader = [&](std::string follower)
+        {
+
+            while (follower != leader[follower])
+            {
+                follower = leader[follower];
+            }
+            std::string myLeader = follower;
+            return myLeader;
+        };
+        
+        auto sameParty = [&](std::string followerA, std::string followerB)
+        {
+            return findLeader(followerA) == findLeader(followerB);
+        };
+        
+        auto uniteParty = [&](std::string followerA, std::string followerB)
+        {
+            std::string leaderA, leaderB;
+            leaderA = findLeader(followerA);
+            leaderB = findLeader(followerB);
+            if (followers[leaderA] < followers[leaderB])
+            {
+                std::string tmp = leaderA;
+                leaderA = leaderB;
+                leaderB = tmp;              
+            }
+
+            followers[leaderA] += followers[leaderB];
+            leader[leaderB] = leaderA;
+        };
+
+
+        std::vector<std::pair<std::string, std::string>> edges;
+        for (auto& ed : edg)
+        {
+            auto& a = std::get<0>(ed);
+            auto& b = std::get<1>(ed);
+           
+            if (!sameParty(a, b))
+            {
+                edges.push_back({ a, b });
+                uniteParty(a, b);
+                
+            }
+        }
+        //Minimum spanning tree
+        std::cout << "Minimum spanning tree Kruskal:" << std::endl;
+        for (auto& edg_ : edges)
+        {
+            std::cout << edg_.first << "--> " << edg_.second << std::endl;
+        }
+
+    }
 
 
 

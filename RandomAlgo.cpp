@@ -43,7 +43,7 @@ namespace za
         void TopologicalSortDFSD();
         void TopologicalSortDFS3StatesD();
         void TreeDiameterD();
-
+        void SpanningTreeKruskalD();
 
     }
 }
@@ -53,7 +53,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::TreeDiameterD();
+    za::demo::SpanningTreeKruskalD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
@@ -358,7 +358,6 @@ namespace za
                 //std::cout <<i.second << std::endl;
             }
         }   
-
         void SubArr4SumHashD()
         {
             std::vector<int> arr = { 10, 20, 30, 40, 1, 2 };
@@ -389,8 +388,7 @@ namespace za
             std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
 
             BellMan(g, nodes, "1");
-        }   
-        
+        }          
         void FloydWarshallD()
         {
             std::map <std::string, std::map <std::string, int>> g;
@@ -428,8 +426,7 @@ namespace za
             std::vector<std::string> nodes = { "1", "2", "3", "4", "5"};
 
             FloydWarshall(g, nodes, "1");
-        }
-                
+        }               
         void DijkstraD()
         {
             std::map <std::string, std::vector<std::pair<std::string, int>>> g;
@@ -443,7 +440,6 @@ namespace za
 
             Dijkstra(g, nodes, "1");
         }
-
         void DFSStackD()
         {
             std::map <std::string, std::vector<std::string>> g;
@@ -471,7 +467,6 @@ namespace za
             DFSRecursion(g, vertices, "1", vist);
 
         }
-
         void BFSQueueD()
         {
             std::map <std::string, std::vector<std::string>> g;
@@ -484,7 +479,6 @@ namespace za
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             BFSQueue(g, vertices, "1");
         }
-
         void IsGConnectedD()
         {
             std::map <std::string, std::vector<std::string>> g;
@@ -501,7 +495,6 @@ namespace za
             IsGConnected(g, vertices);
 
         }
-
         void NumGConnectedD()
         {
             std::map <std::string, std::vector<std::string>> g;
@@ -580,7 +573,6 @@ namespace za
             DFSArrivalDepartureT(g, vertices);
 
         }
-
         void TopologicalSortDFSD()
         {
 
@@ -601,8 +593,7 @@ namespace za
 
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6" };
             TopologicalSortDFS(g, vertices);
-        }
-       
+        }     
         void TopologicalSortDFS3StatesD()
         {
 
@@ -626,24 +617,7 @@ namespace za
         }
         void TreeDiameterD()
         {
-            std::map <std::string, std::vector<std::string>> g;
-            ////clycle
-                //g["1"] = { "2"};
-                //g["2"] = { "3"};
-                //g["3"] = { "5", "6"};
-                //g["4"] = { "1", "5"};
-                //g["5"] = { "2"};            
-
-                //no clycle
-            //g["1"] = { "2" , "3", "4"};
-            //g["2"] = { "1", "5", "6"};
-            //g["3"] = { "1" };
-            //g["4"] = { "1", "7" };
-            //g["5"] = { "2"};
-            //g["6"] = { "2", "8"};
-            //g["7"] = { "4"};
-            //g["8"] = { "6"};
-                        
+            std::map <std::string, std::vector<std::string>> g;                       
             g["1"] = { "2" , "3", "4"};
             g["2"] = { "1", "5", "6"};
             g["3"] = { "1" };
@@ -651,10 +625,21 @@ namespace za
             g["5"] = { "2"};
             g["6"] = { "2"};
             g["7"] = { "4"};
-
-
             std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6", "7"};
             TreeDiameter(g, vertices);
+        }
+        void SpanningTreeKruskalD()
+        {
+            std::map <std::string, std::vector<std::pair<std::string, int>>> g;
+            g["1"] = { {"2", 3 },{"5", 5 }};
+            g["2"] = { {"3", 5 },{"5", 6 }};
+            g["3"] = { {"4", 9 },{"6", 3 }};
+            g["4"] = { {"6", 7 }};
+            g["5"] = { {"6", 2 }};
+
+            std::vector<std::string> vertices = { "1", "2", "3", "4", "5", "6"};
+            SpanningTreeKruskal(g, vertices);
+
         }
        
     }
