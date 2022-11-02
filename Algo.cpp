@@ -1457,6 +1457,24 @@ namespace za
 
     }
 
+    void CreateSuccessorGraphTable(std::map <std::string, std::string>& g, std::vector<std::string>& vertices)
+    {
+        std::map<std::string, std::string> succTable;
+        for (auto& vertex : vertices)
+        {
+            succTable[vertex] = g[vertex];
+        }
+
+        std::cout << "Successor table\n";
+
+        for (auto& vertex : vertices)
+        {
+            std::cout << vertex << "--> " << succTable[vertex] << std::endl;
+        }
+
+
+    }
+
 
 
 }

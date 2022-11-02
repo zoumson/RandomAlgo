@@ -42,6 +42,30 @@
 
 namespace za
 {
+
+    //successor graphs
+    struct LinkListNodeSingle
+    {
+        std::string val;
+        struct LinkListNodeSingle* next;
+        LinkListNodeSingle(std::string val_)
+        {
+            val = val_;
+            next = nullptr;
+        };        
+        LinkListNodeSingle()
+        {
+            val = "";
+            next = nullptr;
+        };
+
+        LinkListNodeSingle(LinkListNodeSingle& nextNode)
+        {           
+            this->next = &nextNode;
+        };
+
+
+    };
     extern std::vector<int> subset;
     extern std::vector < std::vector<int>> setOfSubset;
     extern std::vector<int> permutation;
@@ -112,5 +136,9 @@ namespace za
     void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
     void TreeDiameter(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices);
     void SpanningTreeKruskal(std::map <std::string, std::vector<std::pair<std::string, int>>>& g, std::vector<std::string>& vertices);
+
+    void CreateSuccessorGraphTable(std::map <std::string, std::string>& g, std::vector<std::string>& vertices);
+    void CreateSuccessorGraphTableAll(std::map <std::string, std::string>& g, std::vector<std::string>& vertices);
+
     //void ArrivalDepartureG(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices, std::string s);  
 }
