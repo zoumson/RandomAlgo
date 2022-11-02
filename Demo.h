@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Algo.h"
+#include "Arbre.h"
 
 namespace za
 {
@@ -43,6 +44,20 @@ namespace za
         void TreeDiameterD();
         void SpanningTreeKruskalD();
         void CreateSuccessorGraphTableD();
+        //tri
+        void TwoSum1();
+        void TwoSum2();
+
+
+
+        void Inorder1D();
+        void Preorder1D();
+        void Postorder1D();
+
+        void Inorder2D();
+        void Preorder2D();
+        void Postorder2D();
+        void Levelorder1D();
 
     }
 }

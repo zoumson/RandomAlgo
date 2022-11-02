@@ -596,6 +596,276 @@ namespace za
 
             CreateSuccessorGraphTable(g, vertices);
         }
+        void TwoSum1()
+        {
+            TNodeI t1, t2, t3, t4, t5, t6;
+            t1.val = 5;
+            t2.val = 3;
+            t3.val = 6;
+            t4.val = 2;
+            t5.val = 4;
+            t6.val = 7;
+
+            t1.l = &t2;
+            t1.r = &t3;
+
+            t2.l = &t4;
+            t2.r = &t5;
+
+            t3.r = &t6;
+
+            TwoSum1(t1, 13);
+
+        }
+        void TwoSum2()
+        {
+            TNodeI t1, t2, t3, t4, t5, t6;
+            t1.val = 5;
+            t2.val = 3;
+            t3.val = 6;
+            t4.val = 2;
+            t5.val = 4;
+            t6.val = 7;
+
+            t1.l = &t2;
+            t1.r = &t3;
+
+            t2.l = &t4;
+            t2.r = &t5;
+
+            t3.r = &t6;
+
+            TwoSum2(t1, 13);
+
+        }
+        void Inorder1D()
+        {
+            TNodeI* t1 = new TNodeI(30), *t2 = new TNodeI(20), *t3 = new TNodeI(40), *t4 = new TNodeI(15), 
+                *t5 = new TNodeI(25), *t6 = new TNodeI(35), *t7 = new TNodeI(50), *t8 = new TNodeI(5), 
+                *t9 = new TNodeI(18), *t10 = new TNodeI(45), *t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+      
+            t3->l = t6;
+            t3->r = t7;            
+            
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> inorderData;
+
+            Inorder1(t1, inorderData);
+
+            for (auto& dd : inorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{ 5 , 15 , 18 , 20 , 25 , 30 , 35 , 40 , 45 , 50 , 60 }
+
+
+        }
+        void Preorder1D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> preorderData;
+
+            Preorder1(t1, preorderData);
+
+            for (auto& dd : preorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{30, 20, 15, 5, 18, 25, 40, 35, 50, 45, 60}
+        }
+        void Postorder1D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+
+
+            std::vector<int> postorderData;
+
+            Postorder1(t1, postorderData);
+
+            for (auto& dd : postorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+
+            //{5 , 18 , 15 , 25 , 20 , 35 , 45 , 60 , 50 , 40 , 30}
+        }
+        void Levelorder1D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(t1, levelorderData);
+
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
+        }
+        void Inorder2D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> inorderData;
+
+            Inorder2(t1, inorderData);
+
+            for (auto& dd : inorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{ 5 , 15 , 18 , 20 , 25 , 30 , 35 , 40 , 45 , 50 , 60 }
+
+        }
+        void Preorder2D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> preorderData;
+
+            Preorder2(t1, preorderData);
+
+            for (auto& dd : preorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{30, 20, 15, 5, 18, 25, 40, 35, 50, 45, 60}
+        }
+        void Postorder2D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+
+
+            std::vector<int> postorderData;
+
+            Postorder1(t1, postorderData);
+
+            for (auto& dd : postorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+
+            //{5 , 18 , 15 , 25 , 20 , 35 , 45 , 60 , 50 , 40 , 30}
+        }
 
     }
 }
