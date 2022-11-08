@@ -263,4 +263,122 @@ namespace za
 
 		}
 	}
+
+	void Inversion1(TNodeI* racine)
+	{
+		if (racine == nullptr)
+		{
+			return;
+		}
+
+		auto tmp = racine->l;
+		racine->l = racine->r;
+		racine->r = tmp;
+		Inversion1(racine->l);
+		Inversion1(racine->r);
+
+	}
+	void Inversion2(TNodeI* racine)
+	{
+		std::stack< TNodeI*> st;
+		st.push(racine);
+
+		while (!st.empty())
+		{
+			auto curr = st.top();
+			st.pop();
+
+			auto tmp = curr->l;
+			curr->l = curr->r;
+			curr->r = tmp;
+
+			if (curr->l != nullptr)
+			{
+				st.push(curr->l);
+			}
+
+			if (curr->r != nullptr)
+			{
+				st.push(curr->r);
+			}
+
+
+		}
+	}
+	void Inversion3(TNodeI* racine)
+	{
+		std::queue<TNodeI*> q;
+		q.push(racine);
+
+		while (!q.empty())
+		{
+			auto curr = q.front();
+			q.pop();
+
+			auto tmp = curr->l;
+			curr->l = curr->r;
+			curr->r = tmp;
+
+			if (curr->l != nullptr)
+			{
+				q.push(curr->l);
+			}
+			if (curr->r != nullptr)
+			{
+				q.push(curr->r);
+			}
+
+		}
+	}
+
+	TNodeI* BinTreeFromPreInorder(std::vector<int>& inOrder, std::vector<int>& preOrder, int& currPreIdx, int lIdx, int rIdx)
+	{
+		//static int currPreIdx = 0;
+		if (lIdx > rIdx)
+		{
+			return nullptr;
+		}
+		//current root
+		int currNodeVal = preOrder[currPreIdx];
+
+		//next root
+		currPreIdx++;
+		TNodeI* racine = new TNodeI(currNodeVal);
+
+		//leaf node
+		if (lIdx == rIdx)
+		{
+			return racine;
+		}
+
+
+		auto currNodeValIt = std::find(inOrder.begin() + lIdx, inOrder.begin() + rIdx, currNodeVal);
+		int currInIdx = std::distance(inOrder.begin(), currNodeValIt);
+
+
+		racine->l = BinTreeFromPreInorder(inOrder, preOrder, currPreIdx, lIdx, currInIdx - 1);
+		racine->r = BinTreeFromPreInorder(inOrder, preOrder, currPreIdx, currInIdx + 1, rIdx);
+
+		return racine;
+
+
+	}
+
+
+	int HeightTree(TNodeI* racine)
+	{
+		if (racine == nullptr)
+		{
+			return -1;
+		}
+
+		int lH = HeightTree(racine->l);
+		int rH = HeightTree(racine->r);
+		int currH = 1;
+		currH += lH > rH ? lH : rH;
+
+		return currH;
+
+
+	}
 }

@@ -58,6 +58,12 @@ namespace za
         void Preorder2D();
         void Postorder2D();
         void Levelorder1D();
+        void Inversion1D();
+        void Inversion2D();
+        void Inversion3D();
+        void BinTreeFromPreInorderD();
+        void HeightTreeD();
+
 
     }
 }

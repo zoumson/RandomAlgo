@@ -866,6 +866,193 @@ namespace za
 
             //{5 , 18 , 15 , 25 , 20 , 35 , 45 , 60 , 50 , 40 , 30}
         }
+        void Inversion1D()
+        {
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
+                * t5 = new TNodeI(2), * t6 = new TNodeI(5);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t3->r = t6;
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(t1, levelorderData);
+
+            std::cout << "Before Inversion Level Order" << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+
+            //{1 , 10 , 7 , 6 , 2 , 5}
+            levelorderData.clear();
+            Inversion1(t1);
+
+            Levelorder1(t1, levelorderData);
+
+
+            std::cout << "After Inversion Level Order" << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << std::endl;
+            }
+            //{1 , 7 , 10 , 5 , 2 , 6}
+
+        }        
+        void Inversion2D()
+        {
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
+                * t5 = new TNodeI(2), * t6 = new TNodeI(5);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t3->r = t6;
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(t1, levelorderData);
+
+            std::cout << "Before Inversion Level Order" << std::endl;
+            std::cout << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl << std::endl;
+
+            //{1 , 10 , 7 , 6 , 2 , 5}
+            levelorderData.clear();
+            Inversion2(t1);
+
+            Levelorder1(t1, levelorderData);
+
+
+            std::cout << "After Inversion Level Order" << std::endl;
+            std::cout << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd <<", ";
+            }
+            std::cout << std::endl << std::endl;
+            //{1 , 7 , 10 , 5 , 2 , 6}
+
+        }        
+        
+        void Inversion3D()
+        {
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
+                * t5 = new TNodeI(2), * t6 = new TNodeI(5);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t3->r = t6;
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(t1, levelorderData);
+
+            std::cout << "Before Inversion Level Order" << std::endl;
+            std::cout << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl << std::endl;
+
+            //{1 , 10 , 7 , 6 , 2 , 5}
+            levelorderData.clear();
+            Inversion3(t1);
+
+            Levelorder1(t1, levelorderData);
+
+
+            std::cout << "After Inversion Level Order" << std::endl;
+            std::cout << std::endl;
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd <<", ";
+            }
+            std::cout << std::endl << std::endl;
+            //{1 , 7 , 10 , 5 , 2 , 6}
+
+        }
+
+        void BinTreeFromPreInorderD()
+        {
+
+            std::vector<int> inOrder = { 4, 2, 5, 1, 6, 3 };
+            std::vector<int> preOrder = { 1, 2, 4, 5, 3, 6 };
+            int currIdx = 0;
+            int lIdx = 0;
+            int rIdx = preOrder.size() - 1;
+
+            std::cout << "Constructing Binary Tree from Preorder and Inorder\n";
+            std::cout << std::endl << std::endl;
+            TNodeI* racine = BinTreeFromPreInorder(inOrder, preOrder, currIdx, lIdx, rIdx);
+
+            //Preorder
+            // { 4, 2, 5, 1, 6, 3 };
+
+            std::vector<int> preorderData;
+
+            Preorder1(racine, preorderData);
+            std::cout << "Preorder\n";
+            std::cout << std::endl << std::endl;
+            for (auto& dd : preorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl << std::endl;
+            //Inorder
+            // { 4, 2, 5, 1, 6, 3 };
+            std::vector<int> inorderData;
+
+            Inorder1(racine, inorderData);
+
+            std::cout << "Inorder\n";
+            std::cout << std::endl << std::endl;
+            for (auto& dd : inorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl << std::endl;
+
+        }
+        void HeightTreeD()
+        {
+            TNodeI* t1 = new TNodeI(10), * t2 = new TNodeI(20), * t3 = new TNodeI(30), * t4 = new TNodeI(40),
+                * t5 = new TNodeI(28), * t6 = new TNodeI(27), * t7 = new TNodeI(50), * t8 = new TNodeI(29);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t6->r = t8;
+
+            std::cout << "Tree Height" << std::endl;
+
+            std::cout << HeightTree(t1) << std::endl;
+
+
+        }
 
     }
 }

@@ -10,7 +10,7 @@ int main()
     std::cout.precision(3);
     auto start1 = std::chrono::steady_clock::now();
     double msTimer1 = 0.0;
-    za::demo::Inorder2D();
+    za::demo::HeightTreeD();
     auto end1 = std::chrono::steady_clock::now();
     msTimer1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end1 - start1).count();
     std::scientific;
