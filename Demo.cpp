@@ -510,6 +510,21 @@ namespace za
             std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
             DFSArrivalDepartureT(g, vertices);
 
+        } 
+        //check
+        void DFSArrivalDepartureStackD()
+        {
+
+
+            std::map <std::string, std::vector<std::string>> g;
+            g["0"] = { "1", "2" };
+            g["2"] = { "3", "4" };
+            g["3"] = { "1", "5" };
+            g["4"] = { "5" };
+            g["6"] = { "7" };
+            std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
+            DFSArrivalDepartureStack(g, vertices);
+
         }
         void TopologicalSortDFSD()
         {
@@ -945,8 +960,7 @@ namespace za
             std::cout << std::endl << std::endl;
             //{1 , 7 , 10 , 5 , 2 , 6}
 
-        }        
-        
+        }              
         void Inversion3D()
         {
             TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
@@ -989,7 +1003,6 @@ namespace za
             //{1 , 7 , 10 , 5 , 2 , 6}
 
         }
-
         void BinTreeFromPreInorderD()
         {
 
@@ -1053,6 +1066,268 @@ namespace za
 
 
         }
+        void LevelFromRootD()
+        {
+            GTNodeI* t1 = new GTNodeI(0), * t2 = new GTNodeI(1), * t3 = new GTNodeI(2), * t4 = new GTNodeI(3),
+                * t5 = new GTNodeI(4), * t6 = new GTNodeI(5), * t7 = new GTNodeI(6), * t8 = new GTNodeI(7);
 
+            t1->childreen = {t2, t3, t4};
+            t2->childreen = {t5, t6};
+            t3->childreen = {t7, t8};
+            t4->childreen = {t8};
+
+
+
+            std::cout << "Level from root" << std::endl;
+
+            LevelFromRoot(t1);
+        }
+        void TriDiameter1D()
+        {
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+
+
+            std::cout << "Tree Diameter Recursion" << std::endl;
+
+            std::cout << TriDiameter1(t1) << std::endl;
+            // 4
+        }
+        void TriDiameter2D()
+        {
+
+            GTNodeI* t1 = new GTNodeI(1), * t2 = new GTNodeI(2), * t3 = new GTNodeI(3), * t4 = new GTNodeI(4),
+                * t5 = new GTNodeI(5);
+            t1->childreen = { t2, t3};
+            t2->childreen = { t1, t4, t5 };
+            t3->childreen = { t1};
+            t4->childreen = { t2 };
+            t5->childreen = { t2 };
+
+
+
+
+            std::cout << "Tree Diameter 2 BFS" << std::endl;
+
+            //std::cout << TriDiameter2(t1) << std::endl;
+            std::cout << TriDiameter2(t1) << std::endl;
+
+        }
+        void TriUniversalD()
+        {
+        //    TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(3), * t3 = new TNodeI(3), * t4 = new TNodeI(3),
+        //        * t5 = new TNodeI(3);
+
+        //    t1->l = t2;
+        //    t1->r = t3;
+
+        //    t2->l = t4;
+        //    t2->r = t5;
+        //    //4            
+           
+            TNodeI* t1 = new TNodeI(5), * t2 = new TNodeI(4), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(3), * t6 = new TNodeI(3);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t3->l = t5;
+            t3->r = t6;
+            //5
+
+
+            std::cout << "Universal tree count" << std::endl;
+            int cnt = 0;
+            TriUniversal(t1, cnt);
+            std::cout << cnt << std::endl;
+            //4
+        }
+        void TriCountSubtreesumD()
+        {
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(3), * t3 = new TNodeI(4), * t4 = new TNodeI(2),
+                * t5 = new TNodeI(6), * t6 = new TNodeI(1), * t7 = new TNodeI(11), * t8 = new TNodeI(11), * t9 = new TNodeI(1);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t8;
+            t7->r = t9;
+            int sumVal = 1;
+
+            std::cout << "Number of subtree of sum " << sumVal<< std::endl;
+            std::cout << TriCountSubtreesum(t1, sumVal);
+            std::cout  << std::endl;
+        }
+        void TriSubTriOfEachOtherD()
+        {
+
+            TNodeS* ta = new TNodeS("a"), * tb = new TNodeS("b"), * tc = new TNodeS("c"), * td = new TNodeS("d"),
+                * te = new TNodeS("e"), * tf = new TNodeS("f"), * tg = new TNodeS("g"), * th = new TNodeS("h"),
+                * ti = new TNodeS("i"), * tj = new TNodeS("j"), * tk = new TNodeS("k"), * tl = new TNodeS("l");
+
+            TNodeS* sc = new TNodeS("c"), * sf = new TNodeS("f"), * sg = new TNodeS("g"),
+                * sk = new TNodeS("k"), * sl = new TNodeS("l"), *sh = new TNodeS("h");
+            ta->l = tb;
+            ta->r = tc;
+
+
+            tb->l = td;
+            tb->r = te;
+
+
+            tc->l = tf;
+            tc->r = tg;
+
+
+            tg->l = tk;
+            tg->r = tl;
+
+            td->l = th;
+            td->r = ti;
+
+
+            te->r = tj;
+
+            sc->l = sf;
+            sc->r = sg;
+
+
+            sg->l = sk;
+            sg->r = sl;
+
+            //not subtree
+            sf->l = sh;
+
+
+            std::cout << "Checking if tree A is subtree of tree B" << std::endl;
+            std::cout << std::endl;
+            if (TriSubTriOfEachOther(sc, ta))
+            {
+                std::cout << "Yes" << std::endl;
+            }
+            else
+            {
+                std::cout << "No" << std::endl;
+            }
+
+ 
+        }
+        void TriBalanceD()
+        {
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), *t6 = new TNodeI(6);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            //not balanced
+            //t5->r = t6;
+
+
+            std::cout << "Tree Balanced" << std::endl;
+
+            std::cout << std::endl;
+            if (TriBalance(t1) != -1)
+            {
+                std::cout << "Yes" << std::endl;
+            }
+            else
+            {
+                std::cout << "No" << std::endl;
+            }
+
+        }
+        void TriDuplicate1D()
+        {
+                            /*
+                    6
+                  /   \
+                10      9
+                /  \    / \
+                12   6  5   4
+
+                */
+
+            TNodeI* t1 = new TNodeI(6), * t2 = new TNodeI(10), * t3 = new TNodeI(9), * t4 = new TNodeI(12),
+                * t5 = new TNodeI(6), * t6 = new TNodeI(5), * t7 = new TNodeI(4);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t6;
+            t3->r = t7;
+
+            //duplicate
+            //t2->r = t5;
+            std::unordered_set<int> vis;
+            std::cout << "Tree Duplicate" << std::endl;
+            std::cout << std::endl;
+            if (TriDuplicate1(t1, vis))
+            {
+                std::cout << "Yes" << std::endl;
+            }
+            else
+            {
+                std::cout << "No" << std::endl;
+            }
+        }
+        void TriDuplicate2D()
+        {
+                        /*
+                    6
+                  /   \
+                10      9
+                /  \    / \
+                12   6  5   4
+
+                */
+
+            TNodeI* t1 = new TNodeI(6), * t2 = new TNodeI(10), * t3 = new TNodeI(9), * t4 = new TNodeI(12),
+                * t5 = new TNodeI(6), * t6 = new TNodeI(5), * t7 = new TNodeI(4);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t6;
+            t3->r = t7;
+
+            //duplicate
+            //t2->r = t5;
+            std::cout << "Tree Duplicate 2" << std::endl;
+            std::cout << std::endl;
+            if (TriDuplicate2(t1))
+            {
+                std::cout << "Yes" << std::endl;
+            }
+            else
+            {
+                std::cout << "No" << std::endl;
+            }
+        }
     }
 }

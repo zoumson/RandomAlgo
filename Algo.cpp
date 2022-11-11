@@ -1191,6 +1191,80 @@ namespace za
         std::get<2>(visArrDep[s]) = ++t;
 
     }
+
+    void DFSArrivalDepartureStack(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
+    {
+        
+        size_t n = vertices.size();
+        std::map<std::string, std::tuple<bool, int, int>> visArrDep;
+        for (auto& vertex : vertices)
+        {
+            visArrDep[vertex] = { false, -1, -1 };
+        }
+        int count = -1;
+        auto dfs = [&](std::string sIn)
+        {
+            std::string s = sIn;
+            std::stack<std::string> st;
+            st.push(s);
+            visArrDep[s] = { true, ++count, -1};
+            //int count = 0;
+            while (!st.empty())
+            {
+                auto tmp = st.top();
+                st.pop();
+                std::get<2>(visArrDep[tmp]) = ++count;
+                for (auto child : g[tmp])
+                {
+                    if (!std::get<0>(visArrDep[child]))
+                    {
+                        st.push(child);
+                        std::get<0>(visArrDep[child]) = true;
+                        std::get<1>(visArrDep[child]) = ++count;
+                    }
+                }
+
+            }
+        };
+        //std::string s = vertices[0];
+        //std::stack<std::string> st;
+        //st.push(s);
+        //visArrDep[s] = { true, 0, 0 };
+        //int count = 0;
+        //while (!st.empty())
+        //{
+        //    auto tmp = st.top();
+        //    st.pop();
+        //    std::get<2>(visArrDep[tmp]) = ++count;
+        //    for (auto child : g[tmp])
+        //    {
+        //        if (!std::get<0>(visArrDep[child]))
+        //        {
+        //            st.push(child);
+        //            std::get<0>(visArrDep[child]) = true;
+        //            std::get<1>(visArrDep[child]) = ++count;
+        //        }
+        //    }
+
+        //}
+        for (auto& vertex : vertices)
+        {
+
+            if (!std::get<0>(visArrDep[vertex]))
+            {
+                dfs(vertex);
+            }
+        }
+        std::cout << "\tArrival Departure\n";
+        std::cout << "\tDFS Stack\n";
+        std::cout << "\tVertices\tArrival\t\tDeparture\n";
+
+        for (auto& vertex : vertices)
+        {
+            std::cout << "\t" << vertex << "\t\t" << std::get<1>(visArrDep[vertex]) << "\t\t" << std::get<2>(visArrDep[vertex]) << std::endl;
+        }
+
+    }
     void DFSArrivalDepartureT(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
         size_t n = vertices.size();

@@ -5,6 +5,26 @@
 namespace za
 {
 	template <typename T>
+	struct GTriNode
+	{
+		T val;
+		std::vector<GTriNode*> childreen;
+		int childrenNum;
+		GTriNode()
+		{
+			this->val = T();
+			this->childrenNum = 0;
+		}		
+		 
+		GTriNode(T val_)
+		{
+			this->val = val_;
+			this->childrenNum = 0;
+		}
+
+	};
+
+	template <typename T>
 	struct TriNode
 	{
 		T val;
@@ -26,6 +46,15 @@ namespace za
 		}
 
 	};
+
+
+
+
+	typedef GTriNode<int> GTNodeI;
+	typedef GTriNode<std::string> GTNodeS;
+	typedef GTriNode<double> GTNodeD;
+
+
 	typedef TriNode<int> TNodeI;
 	typedef TriNode<std::string> TNodeS;
 	typedef TriNode<double> TNodeD;
@@ -114,8 +143,129 @@ namespace za
 	int HeightTree(TNodeI* racine);
 
 
+	//7. Level of each node in  Binary Tree from root 
+	/* Steps :
+		Set level of root node as 1
+		Pop the first element in the queue and enqueue all the nodes which are directly connected to the popped element
+		Set the level of all the element which are enqueued in the previos Step to 1 more than element popped in the second step
+	*/
+
+	void LevelFromRoot(GTNodeI* racine);
+	
+
+	//8. Diameter of a Binary Tree
+	/* There can be two possibilities for the longest path of a tree
+	*	It passes through the root
+		It doesn't pass through the root
+
+	Steps for recursion:
+		Undirected graph
+		If the node that is passed in the recursive function is null, then return zero
+		Calculate the height of the left subtree
+		Calculate the height of the right subtree
+		If the diameter passes through the root node, then the no. of nodes in the path will be : Left subtree height + Right subtree height + 1
+		However, if it doesn't pass through the root node, then the diameter will be max(left subtree diameter, right subtree diameter)
+
+	*/
+
+	int TriDiameter1(TNodeI* racine);
+
+	//8. Diameter of a Binary Tree
+	/* 2 DFS
 
 
+	Steps:
+		Undirected graph
+		Start at the root node and find the farthest node from it using BFS
+		Consider this farthest node to be the start node of the longest path
+		Find the farthest node from the start node using BFS
+		This farthest node will be the end node of the longest path
+
+	*/
+
+	int TriDiameter2(GTNodeI* racine);
+
+	//13. Universal Binary Tree
+	/* Top to Bottom 
+
+
+	Steps:
+		When the subtree's both left and right nodes values are equal to root's value
+		When they are leaves i.e. left and right nodes are null
+		When the left or right node is null but the existing right or left node has value equal to the root's value.
+		When the subtree doesnt satisfy these three conditions , then it is not a univalue subtree
+
+	*/
+
+	bool TriUniversal(TNodeI* racine, int& count);
+
+	//14. Counting subtrees where nodes sum to a specific value
+	/* Preorder trasversal
+
+
+	Steps:
+			X=Specified value
+			count=Subtrees count
+
+			Store all nodes in a stack in postorder fashion.
+			Select the top and check if its left and right nodes exists.
+			If yes then check if the node's value is equal to X.
+			If the value=X then increment the count.
+			If No then:
+			Store the left,right nodes in a stack by calling postorder function and derive 
+			the sum by adding all the top elements and popping them up.
+			Check if their sum=X.If yes then increment the count.
+			Pop the top and continue same steps with the next node until the stack is empty.
+
+	*/
+
+	int TriCountSubtreesum(TNodeI* racine, int sumVal);
+	//15. Find if a given Binary Tree is a Sub-Tree of another Binary Tree
+	/* Preorder trasversal
+
+
+	Steps:
+			1: Find out the preorder and inorder traversals of 'Target' and save them in arrays.
+			2: Find out the preorder and inorder traversals of 'Source' and save them in arrays.
+			3: If the arrays of 'Source' are substrings of respective arrays of 'Target' then its a sub-tree else not.
+
+	*/
+
+	bool TriSubTriOfEachOther(TNodeS* source, TNodeS* target);
+
+
+	//13. Balanced Binary Tree
+	/* Top to Bottom
+
+
+	Steps:
+			The left subtree is balanced for each node.
+			Right subtree is also balanced for each node.
+			The absolute height difference of left and right subtree is not more than 1
+			Further,all empty trees are always height balanced
+
+	*/
+
+	int TriBalance(TNodeI* racine);
+
+	//16. Check if a Binary Tree has duplicate values
+	/* Top to Bottom
+
+
+	Steps:
+			We traverse the given tree, for every node, 
+			we check if it's data value already exists in the Hash Map.
+			If it does not exist,then we put it into the Hash Map.
+			If it exists already i.e. there is a duplicate and we return true.
+
+	*/
+	bool TriDuplicate1(TNodeI* racine, std::unordered_set<int>& vis);
+	//16. Check if a Binary Tree has duplicate values
+	/* Trasversal and keep data in array
+	* check if array has duplicate
+
+	*/
+	bool TriDuplicate2(TNodeI* racine);
 
 
 

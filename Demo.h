@@ -39,6 +39,7 @@ namespace za
         void CanColorRedBlueD();
         void TopologicalSortKahnD();
         void DFSArrivalDepartureTD();
+        void DFSArrivalDepartureStackD();
         void TopologicalSortDFSD();
         void TopologicalSortDFS3StatesD();
         void TreeDiameterD();
@@ -63,7 +64,14 @@ namespace za
         void Inversion3D();
         void BinTreeFromPreInorderD();
         void HeightTreeD();
-
-
+        void LevelFromRootD();
+        void TriDiameter1D();
+        void TriDiameter2D();
+        void TriUniversalD();
+        void TriCountSubtreesumD();
+        void TriSubTriOfEachOtherD();
+        void TriBalanceD();
+        void TriDuplicate1D();
+        void TriDuplicate2D();
     }
 }
