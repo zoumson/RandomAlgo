@@ -73,5 +73,12 @@ namespace za
         void TriBalanceD();
         void TriDuplicate1D();
         void TriDuplicate2D();
+        void TriNodesAtDistanceKFromRoot1D();
+        void TriNodesAtDistanceKFromRoot2D();
+        void Levelorder2D();
+        void Levelorder3D();
+        void Levelorder4D();
+        void TriAncestor1D();
+        void TriAncestor2D();
     }
 }

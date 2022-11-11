@@ -894,4 +894,192 @@ namespace za
 		return !(levelOrderDatSet.size() == levelOrderDatVec.size());
 
 	}
+
+	void TriNodesAtDistanceKFromRoot1(TNodeI* racine, int k, std::vector< TNodeI*>& levelKNodes)
+	{
+		if (racine == nullptr)
+		{
+			return;
+		}
+
+		if (k == 0)
+		{
+			levelKNodes.push_back(racine);
+		}
+		else
+		{
+			TriNodesAtDistanceKFromRoot1(racine->l, k - 1, levelKNodes);
+			TriNodesAtDistanceKFromRoot1(racine->r, k - 1, levelKNodes);
+		}
+	}
+
+	void TriNodesAtDistanceKFromRoot2(TNodeI* racine, int k, std::vector< TNodeI*>& levelKNodes)
+	{
+
+
+		auto NodesPerLevel = [&](TNodeI* root)
+		{
+			std::map<int, std::vector< TNodeI*>> m;
+			std::queue<TNodeI*> q;
+			q.push(root);
+			int level = 0;
+			while (!q.empty())
+			{
+				int levelSize = size(q);
+				std::vector< TNodeI*> currLevelData;
+				for (int i = 0; i < levelSize; i++)
+				{
+					auto tmp = q.front();
+					q.pop();
+					if (tmp->l != nullptr)
+					{
+						q.push(tmp->l);
+					}
+
+					if (tmp->r != nullptr)
+					{
+						q.push(tmp->r);
+					}
+					currLevelData.push_back(tmp);
+
+
+				}
+				m[level] = currLevelData;
+				++level;
+			};
+
+			return m;
+		};
+		auto allLevelData = NodesPerLevel(racine);
+		levelKNodes = allLevelData[k];
+
+	}
+	void Levelorder2(TNodeI* racine, std::vector<int>& dat)
+	{
+		int h = HeightTree(racine);
+
+		for (int i = 0; i < h; i++)
+		{
+			std::vector< TNodeI*> levelKNodes;
+			TriNodesAtDistanceKFromRoot1(racine, i, levelKNodes);
+			for (auto d : levelKNodes)
+			{
+				dat.push_back(d->val);
+			}
+			
+		}
+
+	}
+
+	void Levelorder3(TNodeI* racine, std::map<int, std::vector<TNodeI*>>& m)
+	{
+			std::queue<TNodeI*> q;
+			q.push(racine);
+			int level = 0;
+			while (!q.empty())
+			{
+				int levelSize = size(q);
+				std::vector< TNodeI*> currLevelData;
+				for (int i = 0; i < levelSize; i++)
+				{
+					auto tmp = q.front();
+					q.pop();
+					if (tmp->l != nullptr)
+					{
+						q.push(tmp->l);
+					}
+
+					if (tmp->r != nullptr)
+					{
+						q.push(tmp->r);
+					}
+					currLevelData.push_back(tmp);
+
+
+				}
+				m[level] = currLevelData;
+				++level;
+			};
+
+
+	}
+	void Levelorder4(TNodeI* racine, std::map<int, std::vector<TNodeI*>>& m)
+	{
+		int h = HeightTree(racine);
+
+		for (int i = 0; i < h; i++)
+		{
+			std::vector< TNodeI*> levelKNodes;
+			TriNodesAtDistanceKFromRoot1(racine, i, levelKNodes);
+			m[i] = levelKNodes;
+		}
+	}
+
+	void TriAncestor1(TNodeI* racine, TNodeI* node, std::vector< TNodeI*>& ances)
+	{
+		auto myParent = [&]()
+		{
+			std::stack< TNodeI*> st;
+			std::map< TNodeI*, TNodeI*> parent;
+			st.push(racine);
+
+			while (!st.empty())
+			{
+				auto tmp = st.top();
+				st.pop();
+				if (tmp->r != nullptr)
+				{
+					st.push(tmp->r);
+					parent[tmp->r] = tmp;
+				}				
+				if (tmp->l != nullptr)
+				{
+					st.push(tmp->l);
+					parent[tmp->l] = tmp;
+				}
+			}
+
+			return parent;
+
+		};
+
+		auto parTable = myParent();
+		auto curr = node;
+		while (true)
+		{
+			auto par = parTable[curr];
+			curr = par;
+			ances.push_back(par);
+			if (par == racine)
+			{
+				break;
+			}
+		}
+	}
+	bool TriAncestor2(TNodeI* racine, TNodeI* node, std::vector< TNodeI*>& ances)
+	{
+		if (racine == nullptr)
+		{
+			return false;
+		}
+
+		if (racine == node)
+		{
+			return true;
+		}
+
+
+		bool isNodeInLeftSubTri = TriAncestor2(racine->l, node, ances);
+		bool isNodeInRightSubTri = false;
+
+		if (!isNodeInLeftSubTri)
+		{
+			isNodeInRightSubTri = TriAncestor2(racine->r, node, ances);
+		}
+
+		if (isNodeInLeftSubTri || isNodeInRightSubTri)
+		{
+			ances.push_back(racine);
+		}
+	}
 }

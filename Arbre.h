@@ -96,6 +96,8 @@ namespace za
 	void Levelorder1(TNodeI* racine, std::vector<int>& dat);
 
 
+
+
 	//2. Invert / Reverse a Binary Tree
 	/* Inverting a binary tree is producing another binary tree
 	as output where all the left and right nodes of all non-leaf
@@ -267,6 +269,44 @@ namespace za
 	*/
 	bool TriDuplicate2(TNodeI* racine);
 
+	//16. Find nodes which are at a distance k from root in a Binary Tree
+	/* Top to Bottom/recursion
 
+
+		We will make a recursion function, let's say printNodes(node * root, int k) .
+		This function will recursively call itself in its left and right children, with a distance of k-1.
+		Finally, when k=0 is encountered, we will print the value in the current node. 
+		This node will be at a distance of k from the root.
+
+	*/
+	void TriNodesAtDistanceKFromRoot1(TNodeI* racine, int k, std::vector< TNodeI*>& levelKNodes);
+
+	//16. Find nodes which are at a distance k from root in a Binary Tree
+	/* Level Order
+
+
+		Count tree level
+
+	*/
+	void TriNodesAtDistanceKFromRoot2(TNodeI* racine, int k, std::vector< TNodeI*>& levelKNodes);
+
+
+	//24-1 Level trasversal using recursion
+	void Levelorder2(TNodeI* racine, std::vector<int>& dat);
+
+	//24-2 Level trasversal each level with its node iterative
+	void Levelorder3(TNodeI* racine, std::map<int, std::vector<TNodeI*>>& m);
+	//24-3 Level trasversal each level with its node recursion
+	void Levelorder4(TNodeI* racine, std::map<int, std::vector<TNodeI*>>& m);
+
+
+	//16. Ancestors
+	/* Preorder and map
+
+
+	*/
+
+	void TriAncestor1(TNodeI* racine, TNodeI* node, std::vector< TNodeI*>& ances);	
+	bool TriAncestor2(TNodeI* racine, TNodeI* node, std::vector< TNodeI*>& ances);
 
 }

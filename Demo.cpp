@@ -777,10 +777,12 @@ namespace za
 
             Levelorder1(t1, levelorderData);
 
+            std::cout << "Tree level order trasveral using queue\n";
             for (auto& dd : levelorderData)
             {
-                std::cout << dd << std::endl;
+                std::cout << dd << ", ";
             }
+            std::cout << std::endl;
             //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
 
         }
@@ -1328,6 +1330,291 @@ namespace za
             {
                 std::cout << "No" << std::endl;
             }
+        }
+        void TriNodesAtDistanceKFromRoot1D()
+        {
+            /* Constructed binary tree is
+                     1
+                    / \
+                   2    3
+                  /    / \
+                 4    5   6
+                /
+               7
+            */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+ 
+            t4->l = t7;
+            int k = 1;
+            std::vector< TNodeI*> levelKNodes;
+            std::cout << "Nodes at distance  "<<  k << " from root" << std::endl;
+            std::cout << std::endl;
+            TriNodesAtDistanceKFromRoot1(t1, k,  levelKNodes);
+
+            std::cout << std::endl;
+            for (auto node : levelKNodes)
+            {
+                std::cout << node->val << ", ";
+            }
+            std::cout << std::endl;
+
+        }        
+        void TriNodesAtDistanceKFromRoot2D()
+        {
+            /* Constructed binary tree is
+                     1
+                    / \
+                   2    3
+                  /    / \
+                 4    5   6
+                /
+               7
+            */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+ 
+            t4->l = t7;
+            int k = 2;
+            std::vector< TNodeI*> levelKNodes;
+            std::cout << "Nodes at distance  "<<  k << " from root" << std::endl;
+            std::cout << std::endl;
+            TriNodesAtDistanceKFromRoot2(t1, k,  levelKNodes);
+
+            std::cout << std::endl;
+            for (auto node : levelKNodes)
+            {
+                std::cout << node->val << ", ";
+            }
+            std::cout << std::endl;
+
+        }
+        void Levelorder2D()
+        {
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            t4->l = t8;
+            t4->r = t9;
+
+            t3->l = t6;
+            t3->r = t7;
+
+            t7->l = t10;
+            t7->r = t11;
+
+
+            std::vector<int> levelorderData;
+
+            Levelorder2(t1, levelorderData);
+
+            std::cout << "Tree level order trasveral using recursion\n";
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl;
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
+        }        
+        void Levelorder3D()
+        {
+            /* Constructed binary tree is
+                     1
+                    / \
+                   2    3
+                  /    / \
+                 4    5   6
+                /
+               7
+            */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+
+            t4->l = t7;
+
+            std::map<int, std::vector<TNodeI*>> levelorderData;
+
+            Levelorder3(t1, levelorderData);
+
+            std::cout << "Tree level order trasveral nodes per level iterative\n";
+            for (auto& dd : levelorderData)
+            {
+                std::cout << "level " << dd.first << std::endl;
+                for (auto node : dd.second)
+                {
+                    std::cout << node->val << ", ";
+                }
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
+        }        
+        void Levelorder4D()
+        {
+            /* Constructed binary tree is
+                     1
+                    / \
+                   2    3
+                  /    / \
+                 4    5   6
+                /
+               7
+            */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+
+            t4->l = t7;
+
+            std::map<int, std::vector<TNodeI*>> levelorderData;
+
+            Levelorder4(t1, levelorderData);
+
+            std::cout << "Tree level order trasveral nodes per level recursion\n";
+            for (auto& dd : levelorderData)
+            {
+                std::cout << "level " << dd.first << std::endl;
+                for (auto node : dd.second)
+                {
+                    std::cout << node->val << ", ";
+                }
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
+        }
+        void TriAncestor1D()
+        {
+            /* Constructed binary tree is
+                       1
+                      / \
+                     2    3
+                    /    / \
+                   4    5   6
+                  /
+                 7
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+
+            t4->l = t7;
+
+            std::vector< TNodeI*> ances;
+            auto node = t5;
+            TriAncestor1(t1, node, ances);
+            std::cout << "Ancestor of " << node->val << "  \n";
+            for (auto& dd : ances)
+            {
+
+                    std::cout << dd->val << ", ";
+            }
+            std::cout << std::endl;
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
+        }        
+        void TriAncestor2D()
+        {
+            /* Constructed binary tree is
+                       1
+                      / \
+                     2    3
+                    /    / \
+                   4    5   6
+                  /
+                 7
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+
+
+            t3->l = t5;
+            t3->r = t6;
+
+
+            t4->l = t7;
+
+            std::vector< TNodeI*> ances;
+            auto node = t5;
+            TriAncestor2(t1, node, ances);
+            std::cout << "Ancestor of " << node->val << "  \n";
+            for (auto& dd : ances)
+            {
+
+                    std::cout << dd->val << ", ";
+            }
+            std::cout << std::endl;
+            //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
+
         }
     }
 }
