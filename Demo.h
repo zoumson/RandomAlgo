@@ -2,7 +2,8 @@
 #include <iostream>
 #include "Algo.h"
 #include "Arbre.h"
-
+#include "Arbre.h"
+#include "BinSearchT.h"
 namespace za
 {
     namespace demo
@@ -80,5 +81,31 @@ namespace za
         void Levelorder4D();
         void TriAncestor1D();
         void TriAncestor2D();
+        void TriEnCodingD();
+        void TriDeCodingD();
+        //pending
+        void TriSerialize1D();
+        void TriSerialize2D();        
+        void TriDeSerialize1D();
+        void TriDeSerialize2D();
+        void TriZigZag1D();
+        void TriZigZag2D();
+        void TriZigZag3D();
+        void TriZigZag4D();
+        void TriFoldable1D();
+        void TriFoldable2D();
+        void TriIsomorphic1D();
+        void TriIsomorphic2D();
+        //binary search tri
+        void TriBSsortedArrayToBST1D();
+        void TriBSsortedArrayToBST2D();
+        void TriBSMinSwapsD();
+        void TriBSMinValueD();
+        void TriBSMaxValueD();
+        void TriBSBuildBalancedBinaryTreeD();
+        void TriBSFindKthMinimumElementD();
+        void TriBSKsmallestElementSumD();
+
+
     }
 }
