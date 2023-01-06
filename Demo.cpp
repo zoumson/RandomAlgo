@@ -510,7 +510,7 @@ namespace za
             std::vector<std::string> vertices = { "0", "1", "2", "3", "4", "5", "6", "7" };
             DFSArrivalDepartureT(g, vertices);
 
-        } 
+        }
         //check
         void DFSArrivalDepartureStackD()
         {
@@ -655,9 +655,9 @@ namespace za
         }
         void Inorder1D()
         {
-            TNodeI* t1 = new TNodeI(30), *t2 = new TNodeI(20), *t3 = new TNodeI(40), *t4 = new TNodeI(15), 
-                *t5 = new TNodeI(25), *t6 = new TNodeI(35), *t7 = new TNodeI(50), *t8 = new TNodeI(5), 
-                *t9 = new TNodeI(18), *t10 = new TNodeI(45), *t11 = new TNodeI(60);
+            TNodeI* t1 = new TNodeI(30), * t2 = new TNodeI(20), * t3 = new TNodeI(40), * t4 = new TNodeI(15),
+                * t5 = new TNodeI(25), * t6 = new TNodeI(35), * t7 = new TNodeI(50), * t8 = new TNodeI(5),
+                * t9 = new TNodeI(18), * t10 = new TNodeI(45), * t11 = new TNodeI(60);
 
             t1->l = t2;
             t1->r = t3;
@@ -667,10 +667,10 @@ namespace za
 
             t4->l = t8;
             t4->r = t9;
-      
+
             t3->l = t6;
-            t3->r = t7;            
-            
+            t3->r = t7;
+
             t7->l = t10;
             t7->r = t11;
 
@@ -920,7 +920,7 @@ namespace za
             }
             //{1 , 7 , 10 , 5 , 2 , 6}
 
-        }        
+        }
         void Inversion2D()
         {
             TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
@@ -957,12 +957,12 @@ namespace za
             std::cout << std::endl;
             for (auto& dd : levelorderData)
             {
-                std::cout << dd <<", ";
+                std::cout << dd << ", ";
             }
             std::cout << std::endl << std::endl;
             //{1 , 7 , 10 , 5 , 2 , 6}
 
-        }              
+        }
         void Inversion3D()
         {
             TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(10), * t3 = new TNodeI(7), * t4 = new TNodeI(6),
@@ -999,7 +999,7 @@ namespace za
             std::cout << std::endl;
             for (auto& dd : levelorderData)
             {
-                std::cout << dd <<", ";
+                std::cout << dd << ", ";
             }
             std::cout << std::endl << std::endl;
             //{1 , 7 , 10 , 5 , 2 , 6}
@@ -1073,10 +1073,10 @@ namespace za
             GTNodeI* t1 = new GTNodeI(0), * t2 = new GTNodeI(1), * t3 = new GTNodeI(2), * t4 = new GTNodeI(3),
                 * t5 = new GTNodeI(4), * t6 = new GTNodeI(5), * t7 = new GTNodeI(6), * t8 = new GTNodeI(7);
 
-            t1->childreen = {t2, t3, t4};
-            t2->childreen = {t5, t6};
-            t3->childreen = {t7, t8};
-            t4->childreen = {t8};
+            t1->childreen = { t2, t3, t4 };
+            t2->childreen = { t5, t6 };
+            t3->childreen = { t7, t8 };
+            t4->childreen = { t8 };
 
 
 
@@ -1107,9 +1107,9 @@ namespace za
 
             GTNodeI* t1 = new GTNodeI(1), * t2 = new GTNodeI(2), * t3 = new GTNodeI(3), * t4 = new GTNodeI(4),
                 * t5 = new GTNodeI(5);
-            t1->childreen = { t2, t3};
+            t1->childreen = { t2, t3 };
             t2->childreen = { t1, t4, t5 };
-            t3->childreen = { t1};
+            t3->childreen = { t1 };
             t4->childreen = { t2 };
             t5->childreen = { t2 };
 
@@ -1124,16 +1124,16 @@ namespace za
         }
         void TriUniversalD()
         {
-        //    TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(3), * t3 = new TNodeI(3), * t4 = new TNodeI(3),
-        //        * t5 = new TNodeI(3);
+            //    TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(3), * t3 = new TNodeI(3), * t4 = new TNodeI(3),
+            //        * t5 = new TNodeI(3);
 
-        //    t1->l = t2;
-        //    t1->r = t3;
+            //    t1->l = t2;
+            //    t1->r = t3;
 
-        //    t2->l = t4;
-        //    t2->r = t5;
-        //    //4            
-           
+            //    t2->l = t4;
+            //    t2->r = t5;
+            //    //4            
+
             TNodeI* t1 = new TNodeI(5), * t2 = new TNodeI(4), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
                 * t5 = new TNodeI(3), * t6 = new TNodeI(3);
 
@@ -1172,9 +1172,9 @@ namespace za
             t7->r = t9;
             int sumVal = 1;
 
-            std::cout << "Number of subtree of sum " << sumVal<< std::endl;
+            std::cout << "Number of subtree of sum " << sumVal << std::endl;
             std::cout << TriCountSubtreesum(t1, sumVal);
-            std::cout  << std::endl;
+            std::cout << std::endl;
         }
         void TriSubTriOfEachOtherD()
         {
@@ -1184,7 +1184,7 @@ namespace za
                 * ti = new TNodeS("i"), * tj = new TNodeS("j"), * tk = new TNodeS("k"), * tl = new TNodeS("l");
 
             TNodeS* sc = new TNodeS("c"), * sf = new TNodeS("f"), * sg = new TNodeS("g"),
-                * sk = new TNodeS("k"), * sl = new TNodeS("l"), *sh = new TNodeS("h");
+                * sk = new TNodeS("k"), * sl = new TNodeS("l"), * sh = new TNodeS("h");
             ta->l = tb;
             ta->r = tc;
 
@@ -1228,12 +1228,12 @@ namespace za
                 std::cout << "No" << std::endl;
             }
 
- 
+
         }
         void TriBalanceD()
         {
             TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
-                * t5 = new TNodeI(5), *t6 = new TNodeI(6);
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6);
 
             t1->l = t2;
             t1->r = t3;
@@ -1260,14 +1260,14 @@ namespace za
         }
         void TriDuplicate1D()
         {
-                            /*
-                    6
-                  /   \
-                10      9
-                /  \    / \
-                12   6  5   4
+            /*
+    6
+  /   \
+10      9
+/  \    / \
+12   6  5   4
 
-                */
+*/
 
             TNodeI* t1 = new TNodeI(6), * t2 = new TNodeI(10), * t3 = new TNodeI(9), * t4 = new TNodeI(12),
                 * t5 = new TNodeI(6), * t6 = new TNodeI(5), * t7 = new TNodeI(4);
@@ -1297,14 +1297,14 @@ namespace za
         }
         void TriDuplicate2D()
         {
-                        /*
-                    6
-                  /   \
-                10      9
-                /  \    / \
-                12   6  5   4
+            /*
+        6
+      /   \
+    10      9
+    /  \    / \
+    12   6  5   4
 
-                */
+    */
 
             TNodeI* t1 = new TNodeI(6), * t2 = new TNodeI(10), * t3 = new TNodeI(9), * t4 = new TNodeI(12),
                 * t5 = new TNodeI(6), * t6 = new TNodeI(5), * t7 = new TNodeI(4);
@@ -1355,13 +1355,13 @@ namespace za
             t3->l = t5;
             t3->r = t6;
 
- 
+
             t4->l = t7;
             int k = 1;
             std::vector< TNodeI*> levelKNodes;
-            std::cout << "Nodes at distance  "<<  k << " from root" << std::endl;
+            std::cout << "Nodes at distance  " << k << " from root" << std::endl;
             std::cout << std::endl;
-            TriNodesAtDistanceKFromRoot1(t1, k,  levelKNodes);
+            TriNodesAtDistanceKFromRoot1(t1, k, levelKNodes);
 
             std::cout << std::endl;
             for (auto node : levelKNodes)
@@ -1370,7 +1370,7 @@ namespace za
             }
             std::cout << std::endl;
 
-        }        
+        }
         void TriNodesAtDistanceKFromRoot2D()
         {
             /* Constructed binary tree is
@@ -1395,13 +1395,13 @@ namespace za
             t3->l = t5;
             t3->r = t6;
 
- 
+
             t4->l = t7;
             int k = 2;
             std::vector< TNodeI*> levelKNodes;
-            std::cout << "Nodes at distance  "<<  k << " from root" << std::endl;
+            std::cout << "Nodes at distance  " << k << " from root" << std::endl;
             std::cout << std::endl;
-            TriNodesAtDistanceKFromRoot2(t1, k,  levelKNodes);
+            TriNodesAtDistanceKFromRoot2(t1, k, levelKNodes);
 
             std::cout << std::endl;
             for (auto node : levelKNodes)
@@ -1445,7 +1445,7 @@ namespace za
             std::cout << std::endl;
             //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
 
-        }        
+        }
         void Levelorder3D()
         {
             /* Constructed binary tree is
@@ -1490,7 +1490,7 @@ namespace za
             std::cout << std::endl;
             //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
 
-        }        
+        }
         void Levelorder4D()
         {
             /* Constructed binary tree is
@@ -1570,12 +1570,12 @@ namespace za
             for (auto& dd : ances)
             {
 
-                    std::cout << dd->val << ", ";
+                std::cout << dd->val << ", ";
             }
             std::cout << std::endl;
             //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
 
-        }        
+        }
         void TriAncestor2D()
         {
             /* Constructed binary tree is
@@ -1610,11 +1610,986 @@ namespace za
             for (auto& dd : ances)
             {
 
-                    std::cout << dd->val << ", ";
+                std::cout << dd->val << ", ";
             }
             std::cout << std::endl;
             //{30, 20, 40, 15, 25, 35, 50, 5, 18, 45, 60}
 
+        }
+        void TriEnCodingD()
+        {
+            /* Constructed binary tree is
+                       1
+                      / \
+                     4    2
+                    / \    \
+                   6   5     3
+                  
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(4), * t3 = new TNodeI(2), * t4 = new TNodeI(6),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(3);
+            t1->l = t2;
+            t1->r = t3;
+            t2->l = t4;
+            t2->r = t5;
+            t3->r = t6;
+            std::deque<bool> enCodeBitList;
+            std::deque<int> enCodeDataList;
+            TriEnCoding(t1, enCodeBitList, enCodeDataList);
+        
+            std::cout << "Encoding Tree\n";
+
+            std::cout << "Bits: ";
+            for (int iBitVal = 0; iBitVal < enCodeBitList.size(); iBitVal++)
+            {
+                std::cout << enCodeBitList[iBitVal] << ", ";
+            }
+            std::cout << std::endl;
+
+            std::cout << "Data: ";
+            for (int iDataVal = 0; iDataVal < enCodeDataList.size(); iDataVal++)
+            {
+                std::cout << enCodeDataList[iDataVal] << ", ";
+            }
+            std::cout << std::endl;
+        }
+        void TriDeCodingD()
+        {
+            /* Constructed binary tree is
+                       1
+                      / \
+                     4    2
+                    / \    \
+                   6   5     3
+
+              */
+
+
+            std::deque<bool> enCodeBitList = { 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0 };
+            std::deque<int> enCodeDataList = { 1, 4, 6, 5, 2, 3 };
+            
+            
+            TNodeI* racine = TriDeCoding(enCodeBitList, enCodeDataList);
+            std::vector<int> preorderData;
+
+            Preorder1(racine, preorderData);
+            std::cout << "Decoding Tree\n";
+            std::cout << "Preorder Tree: ";
+            for (auto& dd : preorderData)
+            {
+                std::cout << dd <<", ";
+            }
+            std::cout << std::endl;
+
+        }
+        void TriSerialize1D()
+        {
+            /* Constructed binary tree is
+                       5
+                      / \
+                     0    6
+                    / \    \
+                   1   2    7
+                    \
+                     3
+              */
+
+            TNodeI* t1 = new TNodeI(5), * t2 = new TNodeI(0), * t3 = new TNodeI(6), * t4 = new TNodeI(1),
+                * t5 = new TNodeI(2), * t6 = new TNodeI(7), * t7 = new TNodeI(3);
+            t1->l = t2;
+            t1->r = t3;
+            t2->l = t4;
+            t2->r = t5;
+            t3->r = t6;
+            t4->r = t7;
+
+            std::string triSerialize1Str = TriSerialize1(t1);
+            std::cout << "Serialize Tree 1: \n";
+            std::cout << triSerialize1Str << std::endl;
+        }
+        void TriSerialize2D()
+        {
+            /* Constructed binary tree is
+                       5
+                      / \
+                     0    6
+                    / \    \
+                   1   2    7
+                    \
+                     3
+              */
+
+            TNodeI* t1 = new TNodeI(5), * t2 = new TNodeI(0), * t3 = new TNodeI(6), * t4 = new TNodeI(1),
+                * t5 = new TNodeI(2), * t6 = new TNodeI(7), * t7 = new TNodeI(3);
+            t1->l = t2;
+            t1->r = t3;
+            t2->l = t4;
+            t2->r = t5;
+            t3->r = t6;
+            t4->r = t7;
+
+            std::string triSerialize2Str = TriSerialize2(t1);
+            std::cout << "Serialize Tree 2: \n";
+            std::cout << triSerialize2Str << std::endl;
+        }
+        void TriDeSerialize1D()
+        {
+            /* Constructed binary tree is
+                       5
+                      / \
+                     0    6
+                    / \    \
+                   1   2    7
+                    \
+                     3
+              */
+
+            std::string triDeSerialize1Str;
+            TNodeI* racine = TriDeSerialize1(triDeSerialize1Str);
+            std::cout << "DeSerialize Tree 1: \n";
+            std::cout << "Level Order: \n";
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(racine, levelorderData);
+
+            std::cout << "Tree level order trasveral using queue\n";
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl;
+
+        }
+        void TriDeSerialize2D()
+        {
+            /* Constructed binary tree is
+                       5
+                      / \
+                     0    6
+                    / \    \
+                   1   2    7
+                    \
+                     3
+              */
+
+            std::string triDeSerialize2Str;
+            TNodeI* racine = TriDeSerialize1(triDeSerialize2Str);
+            std::cout << "DeSerialize Tree 2: \n";
+            std::cout << "Level Order: \n";
+
+            std::vector<int> levelorderData;
+
+            Levelorder1(racine, levelorderData);
+
+            std::cout << "Tree level order trasveral using queue\n";
+            for (auto& dd : levelorderData)
+            {
+                std::cout << dd << ", ";
+            }
+            std::cout << std::endl;
+        }
+        void TriZigZag1D()
+        {
+            /* Constructed binary tree is
+                       1
+                      /   \
+                     5     2
+                    / \   / \
+                   6   7 3   4
+
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+            t1->l = t5;
+            t1->r = t2;
+
+            t5->l = t6;
+            t5->r = t7;
+
+            t2->l = t3;
+            t2->r = t4;
+
+            std::vector<int> zigzagOrderData;
+            TriZigZag1(t1, zigzagOrderData);
+
+            std::cout << "Tree zigzag trasversal 1\n";
+
+            for (auto& dd : zigzagOrderData)
+            {
+                std::cout << dd << ", ";
+            }
+
+            std::cout << std::endl;
+        }
+        void TriZigZag2D()
+        {
+            /* Constructed binary tree is
+                       1
+                      /   \
+                     5     2
+                    / \   / \
+                   6   7 3   4
+
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+            t1->l = t5;
+            t1->r = t2;
+
+            t5->l = t6;
+            t5->r = t7;
+
+            t2->l = t3;
+            t2->r = t4;
+
+            std::vector<int> zigzagOrderData;
+            TriZigZag2(t1, zigzagOrderData);
+
+            std::cout << "Tree zigzag trasversal 2\n";
+
+            for (auto& dd : zigzagOrderData)
+            {
+                std::cout << dd << ", ";
+            }
+
+            std::cout << std::endl;
+        }
+        void TriZigZag3D()
+        {
+            /* Constructed binary tree is
+                       1
+                      /   \
+                     5     2
+                    / \   / \
+                   6   7 3   4
+
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+            t1->l = t5;
+            t1->r = t2;
+
+            t5->l = t6;
+            t5->r = t7;
+
+            t2->l = t3;
+            t2->r = t4;
+
+            std::vector<int> zigzagOrderData;
+            TriZigZag3(t1, zigzagOrderData);
+
+            std::cout << "Tree zigzag trasversal 3\n";
+
+            for (auto& dd : zigzagOrderData)
+            {
+                std::cout << dd << ", ";
+            }
+
+            std::cout << std::endl;
+        }
+        void TriZigZag4D()
+        {
+            /* Constructed binary tree is
+                       1
+                      /   \
+                     5     2
+                    / \   / \
+                   6   7 3   4
+
+              */
+
+            TNodeI* t1 = new TNodeI(1), * t2 = new TNodeI(2), * t3 = new TNodeI(3), * t4 = new TNodeI(4),
+                * t5 = new TNodeI(5), * t6 = new TNodeI(6), * t7 = new TNodeI(7);
+            t1->l = t5;
+            t1->r = t2;
+
+            t5->l = t6;
+            t5->r = t7;
+
+            t2->l = t3;
+            t2->r = t4;
+
+            std::vector<int> zigzagOrderData;
+            TriZigZag4(t1, zigzagOrderData);
+
+            std::cout << "Tree zigzag trasversal 4\n";
+
+            for (auto& dd : zigzagOrderData)
+            {
+                std::cout << dd << ", ";
+            }
+
+            std::cout << std::endl;
+        }
+        void TriFoldable1D()
+        {
+            /* Constructed binary tree 1 is
+                       1
+                      /   \
+                     4     2
+                      \   / 
+                       5 3   
+
+              */            
+              
+              /* Constructed binary tree 2 is
+                       1
+                      /  \
+                     2    3
+                    /      \
+                   4        5
+
+              */              
+              
+              /* Constructed binary tree 3 is
+                       1
+                      /  \
+                     2    3
+                    / \     \
+                   4   6     5
+
+              */
+
+            TNodeI* t11 = new TNodeI(1), * t21 = new TNodeI(1), * t31 = new TNodeI(1);
+            TNodeI* t12 = new TNodeI(2), * t22 = new TNodeI(2), * t32 = new TNodeI(2);
+            TNodeI* t13 = new TNodeI(3), * t23 = new TNodeI(3), * t33 = new TNodeI(3);
+            TNodeI* t14 = new TNodeI(4), * t24 = new TNodeI(4), * t34 = new TNodeI(4);
+            TNodeI* t15 = new TNodeI(5), * t25 = new TNodeI(5), * t35 = new TNodeI(5);
+            TNodeI* t16 = new TNodeI(6), * t26 = new TNodeI(6), * t36 = new TNodeI(6);
+            
+            //Tree 1, foldable
+            t11->l = t14;
+            t11->r = t12;
+            t14->r = t15;
+            t12->l = t13;
+            //Tree 2, foldable
+            t21->l = t22;
+            t22->l = t24;            
+            
+            t21->r = t23;
+            t23->r = t25;
+
+            //Tree 3, not foldable
+            t31->l = t32;
+            t32->l = t34;
+            t32->r = t36;
+
+            t31->r = t33;
+            t33->r = t35;
+            std::cout << " Tree Foldable 1\n";
+            std::cout << " Tree 1: \n";
+
+            if (TriFoldable1(t11))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+
+            std::cout << " Tree 2: \n";
+            if (TriFoldable1(t21))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }            
+            
+            std::cout << " Tree 3: \n";
+            if (TriFoldable1(t31))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+
+
+
+
+        }
+        void TriFoldable2D()
+        {
+            /* Constructed binary tree 1 is
+                        1
+                       /   \
+                      4     2
+                       \   /
+                        5 3
+
+               */
+
+               /* Constructed binary tree 2 is
+                        1
+                       /  \
+                      2    3
+                     /      \
+                    4        5
+
+               */
+
+               /* Constructed binary tree 3 is
+                        1
+                       /  \
+                      2    3
+                     / \     \
+                    4   6     5
+
+               */
+
+            TNodeI* t11 = new TNodeI(1), * t21 = new TNodeI(1), * t31 = new TNodeI(1);
+            TNodeI* t12 = new TNodeI(2), * t22 = new TNodeI(2), * t32 = new TNodeI(2);
+            TNodeI* t13 = new TNodeI(3), * t23 = new TNodeI(3), * t33 = new TNodeI(3);
+            TNodeI* t14 = new TNodeI(4), * t24 = new TNodeI(4), * t34 = new TNodeI(4);
+            TNodeI* t15 = new TNodeI(5), * t25 = new TNodeI(5), * t35 = new TNodeI(5);
+            TNodeI* t16 = new TNodeI(6), * t26 = new TNodeI(6), * t36 = new TNodeI(6);
+
+            //Tree 1, foldable
+            t11->l = t14;
+            t11->r = t12;
+            t14->r = t15;
+            t12->l = t13;
+            //Tree 2, foldable
+            t21->l = t22;
+            t22->l = t24;
+
+            t21->r = t23;
+            t23->r = t25;
+
+            //Tree 3, not foldable
+            t31->l = t32;
+            t32->l = t34;
+            t32->r = t36;
+
+            t31->r = t33;
+            t33->r = t35;
+            std::cout << " Tree Foldable 2\n";
+            std::cout << " Tree 1: \n";
+
+            if (TriFoldable2(t11))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+
+            std::cout << " Tree 2: \n";
+            if (TriFoldable2(t21))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+
+            std::cout << " Tree 3: \n";
+            if (TriFoldable2(t31))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+        }
+        void TriIsomorphic1D()
+        {
+            /* Constructed binary tree 1 is
+                       1
+                      /   \
+                     2      3
+                    / \    /
+                   4   5  6
+                      / \
+                     7   8
+
+              */            
+              
+              /* Constructed binary tree 2 is
+                       1
+                      /   \
+                     3     2
+                      \   / \
+                       6 4   5
+                            /  \
+                           8    7
+
+              */
+            TNodeI* t11 = new TNodeI(1), * t21 = new TNodeI(1);
+            TNodeI* t12 = new TNodeI(2), * t22 = new TNodeI(2);
+            TNodeI* t13 = new TNodeI(3), * t23 = new TNodeI(3);
+            TNodeI* t14 = new TNodeI(4), * t24 = new TNodeI(4);
+            TNodeI* t15 = new TNodeI(5), * t25 = new TNodeI(5);
+            TNodeI* t16 = new TNodeI(6), * t26 = new TNodeI(6);
+            TNodeI* t17 = new TNodeI(7), * t27 = new TNodeI(7);
+            TNodeI* t18 = new TNodeI(8), * t28 = new TNodeI(8);
+
+            //tree 1
+            t11->l = t12;
+            t11->r = t13;
+
+            t12->l = t14;
+            t12->r = t15;
+
+            t13->l = t16;
+
+            t15->l = t17;
+            t15->r = t18;
+
+            //tree 2
+            t21->l = t23;
+            t21->r = t22;
+
+       
+            t23->r = t26;
+
+            t22->l = t24;
+            t22->r = t25;
+
+            t25->l = t28;
+            t25->r = t27;
+
+            std::cout << "TriIsomorphic 1\n";
+            if (TriIsomorphic1(t11, t21))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+
+        }
+        void TriIsomorphic2D()
+        {
+            /* Constructed binary tree 1 is
+                       1
+                      /   \
+                     2      3
+                    / \    /
+                   4   5  6
+                      / \
+                     7   8
+
+              */
+
+              /* Constructed binary tree 2 is
+                       1
+                      /   \
+                     3     2
+                      \   / \
+                       6 4   5
+                            /  \
+                           8    7
+
+              */
+            TNodeI* t11 = new TNodeI(1), * t21 = new TNodeI(1);
+            TNodeI* t12 = new TNodeI(2), * t22 = new TNodeI(2);
+            TNodeI* t13 = new TNodeI(3), * t23 = new TNodeI(3);
+            TNodeI* t14 = new TNodeI(4), * t24 = new TNodeI(4);
+            TNodeI* t15 = new TNodeI(5), * t25 = new TNodeI(5);
+            TNodeI* t16 = new TNodeI(6), * t26 = new TNodeI(6);
+            TNodeI* t17 = new TNodeI(7), * t27 = new TNodeI(7);
+            TNodeI* t18 = new TNodeI(8), * t28 = new TNodeI(8);
+
+            //tree 1
+            t11->l = t12;
+            t11->r = t13;
+
+            t12->l = t14;
+            t12->r = t15;
+
+            t13->l = t16;
+
+            t15->l = t17;
+            t15->r = t18;
+
+            //tree 2
+            t21->l = t23;
+            t21->r = t22;
+
+
+            t23->r = t26;
+
+            t22->l = t24;
+            t22->r = t25;
+
+            t25->l = t28;
+            t25->r = t27;
+
+            std::cout << "TriIsomorphic 2\n";
+            if (TriIsomorphic2(t11, t21))
+            {
+                std::cout << " Yes\n";
+            }
+            else
+            {
+                std::cout << " No\n";
+            }
+        }
+        void TriBSsortedArrayToBST1D()
+        {
+
+            /* Sorted array is
+             
+            1, 2, 4, 5, 6, 7, 8, 9
+
+            */
+            /* Constructed binary search tree is
+                   5
+                  /  \
+                 2     7
+                / \   / \
+               1   4  6  8
+                          \
+                           9
+
+            */
+
+            //std::vector<int> arr = { 2,9,6,5,7,1,8,4 };
+            std::vector<int> arr = { 1, 2, 4, 5, 6, 7, 8, 9};
+
+            //std::sort(arr.begin(), arr.end());
+
+            //Creating a balanced binary tree and inserting elements
+            //BinSearchT* root = sortedArrayToBST1(arr, 0, arr.size() - 1);
+            std::cout << "Sorted array to binary search tree 1" << std::endl;
+            std::cout << "Sorted Array" << std::endl;
+            for (auto el : arr)
+            {
+                std::cout << el << ", ";
+            }
+            std::cout << std::endl;
+            BinSearchT * racine = sortedArrayToBST1(arr, 0, arr.size() - 1);
+            //BinSearchT * racine = sortedArrayToBST2(arr);
+            std::cout << "Preorder of tree from Sorted Array" << std::endl;
+            std::vector<int> preOrdervalues;
+            preorder(racine, preOrdervalues);
+            std::cout << "Preorder Tree:" << std::endl;
+            for (auto el : preOrdervalues)
+            {
+                std::cout << el << ", ";
+            }
+            std::cout << std::endl;
+
+          
+        }        
+        void TriBSsortedArrayToBST2D()
+        {
+
+            /* Sorted array is
+             
+            1, 2, 4, 5, 6, 7, 8, 9
+
+            */
+            /* Constructed binary search tree is
+                   5
+                  /  \
+                 2     7
+                / \   / \
+               1   4  6  8
+                          \
+                           9
+
+            */
+
+            //std::vector<int> arr = { 2,9,6,5,7,1,8,4 };
+            std::vector<int> arr = { 1, 2, 4, 5, 6, 7, 8, 9};
+
+            //std::sort(arr.begin(), arr.end());
+
+            //Creating a balanced binary tree and inserting elements
+            //BinSearchT* root = sortedArrayToBST1(arr, 0, arr.size() - 1);
+            std::cout << "Sorted array to binary search tree 2"  << std::endl;
+            std::cout << "Sorted Array" << std::endl;
+            for (auto el : arr)
+            {
+                std::cout << el << ", ";
+            }
+            std::cout << std::endl;
+            BinSearchT * racine = sortedArrayToBST2(arr);
+            std::cout << "Preorder of tree from Sorted Array" << std::endl;
+            std::vector<int> preOrdervalues;
+            preorder(racine, preOrdervalues);
+            std::cout << "Preorder Tree:" << std::endl;
+            for (auto el : preOrdervalues)
+            {
+                std::cout << el << ", ";
+            }
+            std::cout << std::endl;
+
+          
+        }
+        void TriBSMinSwapsD()
+        {
+
+            /* Constructed  tree is
+                   1
+                  /  \
+                 2     3
+                / \    
+               4   5    
+            */
+            BinSearchT* t1 = new BinSearchT(1);
+            BinSearchT* t2 = new BinSearchT(2);
+            BinSearchT* t3 = new BinSearchT(3);
+            BinSearchT* t4 = new BinSearchT(4);
+            BinSearchT* t5 = new BinSearchT(5);
+
+            t1->l = t2;
+            t1->r = t3;
+
+            t2->l = t4;
+            t2->r = t5;
+
+            int minSwap = minSwaps(t1);
+
+            std::cout << "Minimum swap to convert binary tree to binary search tree:\n";
+            std::cout << minSwap << std::endl;
+
+        }
+        void TriBSMinValueD()
+        {
+
+            /* Constructed  tree is
+                   ------------------8-------------------
+                   |                                    |
+             ----- 3-----                 --------------10--------------
+             |          |                 |                            |
+             1      ----6----             9                      -----13-----
+                    |        |                                   |           |
+                    4----    7                                   11----      14
+                        |                                             |
+                        5                                             12
+
+            */
+            BinSearchT* t1 = new BinSearchT(1);
+            BinSearchT* t3 = new BinSearchT(3);
+            BinSearchT* t4 = new BinSearchT(4);
+            BinSearchT* t5 = new BinSearchT(5);
+            BinSearchT* t6 = new BinSearchT(6);
+            BinSearchT* t7 = new BinSearchT(7);
+            BinSearchT* t8 = new BinSearchT(8);
+            BinSearchT* t9 = new BinSearchT(9);
+            BinSearchT* t10 = new BinSearchT(10);
+            BinSearchT* t11 = new BinSearchT(11);
+            BinSearchT* t12 = new BinSearchT(12);
+            BinSearchT* t13 = new BinSearchT(13);
+            BinSearchT* t14 = new BinSearchT(14);
+
+            t8->l = t3;
+            t8->r = t10;
+            
+            t3->l = t1;
+            t3->r = t6;    
+
+            t10->l = t9;
+            t10->r = t13;
+
+            t6->l = t4;
+            t6->r = t7;
+
+            t13->l = t11;
+            t13->r = t14;
+                        
+
+            t4->r = t5;
+
+            t11->r = t12;
+
+            int minVal = minValue(t8);
+
+            std::cout << "Minimum of a  binary search tree:\n";
+            std::cout << minVal << std::endl;
+        }        
+        void TriBSMaxValueD()
+        {
+
+            /* Constructed  tree is
+                   ------------------8-------------------
+                   |                                    |
+             ----- 3-----                 --------------10--------------
+             |          |                 |                            |
+             1      ----6----             9                      -----13-----
+                    |        |                                   |           |
+                    4----    7                                   11----      14
+                        |                                             |
+                        5                                             12
+
+            */
+            BinSearchT* t1 = new BinSearchT(1);
+            BinSearchT* t3 = new BinSearchT(3);
+            BinSearchT* t4 = new BinSearchT(4);
+            BinSearchT* t5 = new BinSearchT(5);
+            BinSearchT* t6 = new BinSearchT(6);
+            BinSearchT* t7 = new BinSearchT(7);
+            BinSearchT* t8 = new BinSearchT(8);
+            BinSearchT* t9 = new BinSearchT(9);
+            BinSearchT* t10 = new BinSearchT(10);
+            BinSearchT* t11 = new BinSearchT(11);
+            BinSearchT* t12 = new BinSearchT(12);
+            BinSearchT* t13 = new BinSearchT(13);
+            BinSearchT* t14 = new BinSearchT(14);
+
+            t8->l = t3;
+            t8->r = t10;
+            
+            t3->l = t1;
+            t3->r = t6;    
+
+            t10->l = t9;
+            t10->r = t13;
+
+            t6->l = t4;
+            t6->r = t7;
+
+            t13->l = t11;
+            t13->r = t14;
+                        
+
+            t4->r = t5;
+
+            t11->r = t12;
+
+            int maxVal = maxValue(t8);
+
+            std::cout << "Maximum of a  binary search tree:\n";
+            std::cout << maxVal << std::endl;
+        }
+        void TriBSBuildBalancedBinaryTreeD()
+        {
+            /* Constructed  unbalanced tree is
+                   1
+                    \
+                     2
+                      \
+                       3
+                        \
+                         4
+                          \
+                           5
+      
+            */            
+            
+            /* Constructed  balanced tree is
+
+                       3
+                     /  \
+                    2    4
+                   /      \
+                  1         5
+      
+            */
+            BinSearchT* t1 = new BinSearchT(1);
+            BinSearchT* t2 = new BinSearchT(2);
+            BinSearchT* t3 = new BinSearchT(3);
+            BinSearchT* t4 = new BinSearchT(4);
+            BinSearchT* t5 = new BinSearchT(5);
+
+            t1->r = t2;
+            t2->r = t3;
+            t3->r = t4;
+            t4->r = t5;
+
+            std::cout << "Convert Binary Search Tree into Balanced Binary Search Tree\n";
+
+            BinSearchT* balancedTriRacine = buildBalancedBinaryTree(t1);
+            std::cout << "Pre order Traversal of tree" << std::endl;
+            std::vector<int> preOrderData; 
+            preorder(balancedTriRacine, preOrderData);
+
+            for (auto nod : preOrderData)
+            {
+                std::cout << nod << ", ";
+            }
+
+            std::cout << std::endl;
+
+        }
+        void TriBSFindKthMinimumElementD()
+        {
+           
+            
+            /* Constructed  tree is
+
+                      6
+                     /  \
+                    4    8
+                   / \     \
+                  3   5     9
+      
+            */
+            BinSearchT* t3 = new BinSearchT(3);
+            BinSearchT* t4 = new BinSearchT(4);
+            BinSearchT* t5 = new BinSearchT(5);
+            BinSearchT* t6 = new BinSearchT(6);
+            BinSearchT* t8 = new BinSearchT(8);
+            BinSearchT* t9 = new BinSearchT(9);
+
+            t6->l = t4;
+            t6->r = t8;
+            t4->l = t3;
+            t4->r = t5;
+
+            std::cout << "Find k-th smallest element in Binary Search Tree\n";
+            int k = 3;
+            int minElem = findKthMinimumElement(t6, k);
+            std::cout << "Minimum" << std::endl;
+            std::cout << minElem << std::endl;
+
+            std::cout << std::endl;
+        }
+        void TriBSKsmallestElementSumD()
+        {
+
+
+            /* Constructed  tree is
+
+                      54
+                     /  \
+                    51   75
+                   / \     \
+                  49        85
+
+            */
+            BinSearchT* t49 = new BinSearchT(49);
+            BinSearchT* t51 = new BinSearchT(51);
+            BinSearchT* t52 = new BinSearchT(52);
+            BinSearchT* t54 = new BinSearchT(54);
+            BinSearchT* t74 = new BinSearchT(74);
+            BinSearchT* t75 = new BinSearchT(75);
+            BinSearchT* t85 = new BinSearchT(85);
+
+
+            t54->l = t51;
+            t54->r = t75;
+
+            t51->l = t49;
+            t51->r = t52;
+
+            t75->l = t74;
+            t75->r = t85;
+
+            std::cout << "Sum of k smallest elements in Binary Search Tree\n";
+            int  k = 3;
+            int minSum = ksmallestElementSum(t54, k);
+            std::cout << "Sum" << std::endl;
+
+            std::cout << minSum << std::endl;
+
+            std::cout << std::endl;
         }
     }
 }
