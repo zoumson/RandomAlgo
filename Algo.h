@@ -52,7 +52,7 @@ namespace za
         {
             val = val_;
             next = nullptr;
-        };        
+        };
         LinkListNodeSingle()
         {
             val = "";
@@ -60,7 +60,7 @@ namespace za
         };
 
         LinkListNodeSingle(LinkListNodeSingle& nextNode)
-        {           
+        {
             this->next = &nextNode;
         };
 
@@ -84,7 +84,7 @@ namespace za
         , std::integral_constant<size_t, std::tuple_size<typename std::remove_reference<TupleType>::type >::value>) {}
     template<std::size_t I, typename TupleType, typename FunctionType
         , typename = typename std::enable_if<I != std::tuple_size<typename std::remove_reference<TupleType>::type>::value>::type >
-        void for_each(TupleType&& t, FunctionType f, std::integral_constant<size_t, I>)
+    void for_each(TupleType&& t, FunctionType f, std::integral_constant<size_t, I>)
     {
         f(std::get<I>(std::forward<TupleType>(t)));
         for_each(std::forward<TupleType>(t), f, std::integral_constant<size_t, I + 1>());
