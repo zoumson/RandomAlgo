@@ -1194,7 +1194,7 @@ namespace za
 
     void DFSArrivalDepartureStack(std::map <std::string, std::vector<std::string>>& g, std::vector<std::string>& vertices)
     {
-        
+
         size_t n = vertices.size();
         std::map<std::string, std::tuple<bool, int, int>> visArrDep;
         for (auto& vertex : vertices)
@@ -1207,7 +1207,7 @@ namespace za
             std::string s = sIn;
             std::stack<std::string> st;
             st.push(s);
-            visArrDep[s] = { true, ++count, -1};
+            visArrDep[s] = { true, ++count, -1 };
             //int count = 0;
             while (!st.empty())
             {
